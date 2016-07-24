@@ -1,11 +1,8 @@
-# KaiPractice
+# KaiJs
 
-gradle构建的新练习、功能试验项目, 不包含老的ant构建的测试项目的测试内容,老的链接为:  [KaiTest](https://github.com/qianhk/KaiTest)
+js、node、react、react native相关功能试验、练习
 
-自己测试功能时用的一个小程序，经常长时间的积累，已经有各种各样的试验，可以通过 *MainFragment* 显示出来的功能列表选择进入，类似与Android官方示例ApiDemo。
+RnPractice app里有个TestEntry.js，会显示一个列表出来，点击不同的列表项测试不同的功能，类似与Android官方示例ApiDemo，也类似于个人Android的试验项目: [KaiPractice](https://github.com/qianhk/KaiPractice)
 
-## 示例介绍(待补充)
-
-1.** xxx **  zzzzzzzz
 
 
