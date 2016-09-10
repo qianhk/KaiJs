@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        renderPage(mInstance, getPackageName(), WXFileUtils.loadAsset("tech_list.js", this), WEEX_INDEX_URL, null);
 
+        renderPage(mInstance, getPackageName(), WXFileUtils.loadAsset("hello.js", this), WEEX_INDEX_URL, null);
 
     }
 
