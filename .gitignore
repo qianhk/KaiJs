@@ -104,4 +104,7 @@ local.properties
 
 proguard_logs/
 
+node_modules
+dist
+
 

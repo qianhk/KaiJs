@@ -56,7 +56,7 @@
 "fontSize": 100
 },
 "attr": {
-"value": "Hello World."
+"value": "Hello World at weex in assets folder."
 }
 }
 ]

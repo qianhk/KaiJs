@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String DEFAULT_IP = "192.168.18.20";
     private static String CURRENT_IP = DEFAULT_IP; // your_current_IP
-    private static final String WEEX_INDEX_URL = "http://" + CURRENT_IP + ":12580/examples/build/index.js";
+    private static final String WEEX_INDEX_URL = "http://" + CURRENT_IP + ":8080/dist/tech_list.js";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        renderPage(mInstance, getPackageName(), WXFileUtils.loadAsset("hello.js", this), WEEX_INDEX_URL, null);
+        renderPage(mInstance, getPackageName(), WXFileUtils.loadAsset("tech_list.js", this), WEEX_INDEX_URL, null);
 
     }
 
