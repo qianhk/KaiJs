@@ -1,39 +1,42 @@
 <template>
-  <container>
-    <text class="large">The time is {{datetime}}</text>
-    <text>{{title}}</text>
-    <text>{% raw %} {{getTitle()}} {% endraw %}</text>
-  </container>
+    <container>
+        <text class="large">The time is {{datetime}}</text>
+        <text>{{title}}</text>
+        <text>{% raw %} {{getTitle()}} {% endraw %}</text>
+    </container>
 </template>
 
 <script>
-  module.exports = {
-    data: {
-      title: 'KaiKai Weex',
-      datetime: null
-    },
-    methods: {
-      getTitle: function () {
-        return 'Weex Syntax Test'
-      }
-    },
-    created: function() {
-      this.datetime = new Date().toLocaleString()
+    module.exports = {
+        data: {
+            title: 'KaiKai Weex',
+            datetime: null
+        },
+        methods: {
+            getTitle: function () {
+                return 'Weex Syntax Test'
+            }
+        },
+        created: function () {
+            this.datetime = new Date().toLocaleString()
+        }
     }
-  }
 </script>
 
 <style>
-.large {font-size: 64;}
+    .large {
+        font-size: 64;
+    }
 
-  .ct {
-    width: 750;
-    align-items: center;
-    justify-content: center;
-  }
-  .img {
-    margin-bottom: 20px;
-  }
+    .ct {
+        width: 750;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img {
+        margin-bottom: 20px;
+    }
 </style>
 
 
