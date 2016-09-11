@@ -3,6 +3,8 @@
         <text class="large">The time is {{datetime}}</text>
         <text>{{title}}</text>
         <text>{% raw %} {{getTitle()}} {% endraw %}</text>
+        <text>{{fullName}}</text>
+        <text onclick="changeName()" style="margin-left:10px;margin-top: 20px;">Change name</text>
     </container>
 </template>
 
@@ -10,26 +12,44 @@
     module.exports = {
         data: {
             title: 'KaiKai Weex',
-            datetime: null
+            datetime: null,
+            firstName: "qian",
+            lastName: 'kai555'
         },
         methods: {
             getTitle: function () {
                 return 'Weex Syntax Test'
+            },
+            changeName: function () {
+                this.fullName = 'Terry King'
             }
         },
         created: function () {
             this.datetime = new Date().toLocaleString()
-        }
+        },
+        computed: {
+            fullName: {
+                get: function () {
+                    return this.firstName + ' ' + this.lastName
+                },
+
+                set: function (v) {
+                    var s = v.split(' ')
+                    this.firstName = s[0]
+                    this.lastName = s[1]
+                }
+            }
+        },
     }
 </script>
 
 <style>
     .large {
-        font-size: 64;
+        font-size: 64px;
     }
 
     .ct {
-        width: 750;
+        width: 750px;
         align-items: center;
         justify-content: center;
     }
