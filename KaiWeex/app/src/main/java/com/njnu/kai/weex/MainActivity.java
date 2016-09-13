@@ -1,7 +1,7 @@
 package com.njnu.kai.weex;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import com.taobao.weex.IWXRenderListener;
@@ -13,7 +13,7 @@ import com.taobao.weex.utils.WXViewUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     private ViewGroup mLayoutContainer;
 

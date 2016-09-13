@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 22
     buildToolsVersion '24.0.1'
 
     defaultConfig {
@@ -10,6 +10,14 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+
+        ndk {
+////            abiFilters 'armeabi', 'armeabi-v7a'
+////            abiFilter 'armeabi-v7a'
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+////            abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+
     }
     buildTypes {
         release {
@@ -22,7 +30,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:support-v4:22.2.1'
 
     compile 'com.taobao.android:weex_sdk:0.7.0'
     compile 'com.squareup.picasso:picasso:2.5.2'

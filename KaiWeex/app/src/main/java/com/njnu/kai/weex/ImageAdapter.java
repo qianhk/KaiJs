@@ -2,6 +2,7 @@ package com.njnu.kai.weex;
 
 import android.text.TextUtils;
 import android.widget.ImageView;
+
 import com.squareup.picasso.Picasso;
 import com.taobao.weex.WXEnvironment;
 import com.taobao.weex.WXSDKManager;
