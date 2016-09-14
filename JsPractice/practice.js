@@ -457,3 +457,27 @@ function testSelectCheckForm() {
         }
     });
 }
+
+function testMoonGame() {
+
+    let startTime = new Date().getTime();
+
+    let js = 0;
+    for (let idx = 0; idx < 730000; ++idx) {
+        js += idx;
+    }
+
+    let endTime = new Date().getTime(); //游戏结束时间
+    let gameNum = 0.0213; //(endTime - startTime) / 1000.0;
+//游戏最终完成的时间
+    let gameWinTime = Math.round(gameNum * 1000) / 1000;
+
+    let chaValue = (Math.round((gameWinTime - (0.5)) * 100) / 100);
+
+    document.writeln("<br><br>Game info:<br><br>startTime=" + startTime + "<br><br>endTime=" + endTime + " gameNum=" + gameNum
+     + " gameWinTime=" + gameWinTime + " cha=" + chaValue + "<br><br><br><br><br><br>");
+}
+
+testMoonGame();
+
+
