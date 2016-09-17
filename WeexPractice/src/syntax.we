@@ -1,10 +1,10 @@
 <template>
     <container>
-        <text class="large">The time is {{datetime}}</text>
+        <text if="shown" class="large">The time is {{datetime}}</text>
         <text>{{title}}</text>
         <text>{% raw %} {{getTitle()}} {% endraw %}</text>
         <text>{{fullName}}</text>
-        <text onclick="changeName()" style="margin-left:10;margin-top: 20;">Change name</text>
+        <text onclick="changeName" style="margin-left:10;margin-top: 20;">Change name</text>
     </container>
 </template>
 
@@ -14,14 +14,16 @@
             title: 'KaiKai Weex',
             datetime: null,
             firstName: "qian",
-            lastName: 'kai555'
+            lastName: 'kai555',
+            shown: true
         },
         methods: {
             getTitle: function () {
                 return 'Weex Syntax Test'
             },
             changeName: function () {
-                this.fullName = 'Terry King'
+                this.fullName = 'Terry King';
+                this.shown = !this.shown;
             }
         },
         created: function () {

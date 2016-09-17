@@ -106,5 +106,5 @@ proguard_logs/
 
 node_modules
 dist
-
+weex_tmp
 
