@@ -1,21 +1,42 @@
 <template>
     <container>
         <text if="shown" class="large">The time is {{datetime}}</text>
-        <text >{{title}}</text>
+        <text>{{title}}</text>
         <text>{% raw %} {{getTitle()}} {% endraw %}</text>
         <text onclick="changeName($event, 'own')">{{fullName}}</text>
         <text onclick="changeName" style="margin-left:10;margin-top: 20;">Change name</text>
+
+        <div repeat="(index, item) in list" >
+            <text>No. {{index + 1}}</text>
+            <image style="width:50;height=50;" src="{{item.avatar}}"></image>
+            <text>{{item.nickname}}  {{item.age}}</text>
+        </div>
+
+        <text onclick="changeListName" style="margin-top: 20">改name</text>
+        <text onclick="innerClearUserList">清除列表</text>
+        <text onclick="appendUserList">添加项</text>
     </container>
 </template>
 
 <script>
+    function clearUserList(vm) {
+        console.log("execute clear user list function.")
+//        vm.list.length = 0; //error,  it won't trigger view update
+        vm.list = [];
+    }
+
     module.exports = {
         data: {
             title: 'KaiKai Weex',
             datetime: null,
             firstName: "qian",
             lastName: 'kai555',
-            shown: true
+            shown: true,
+            list: [
+                {gender: 'male', age:20, nickname: 'Li Lei', avatar: 'http://img.weixinyidu.com/150901/4a74dca5.jpg'},
+                {gender: 'female', age:21, nickname: 'Han Meimei', avatar: 'http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/2102622/7055075.jpg'},
+                {gender: 'male', age:22, nickname: 'kai', avatar: 'http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/11852/564218.jpg'}
+            ]
         },
         methods: {
             getTitle: function () {
@@ -29,6 +50,18 @@
                     this.fullName = 'Terry King';
                     this.shown = !this.shown;
                 }
+            },
+            changeListName: function () {
+                //this.list[2] = {} //error,  it won't trigger view update
+                //必须写全,不会合并未写的, 如不能只有nickname字段,不然其他都是undefined
+                this.list.$set(2, {gender: 'male', age:22, nickname: 'kaikai', avatar: 'http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/11852/564218.jpg'});
+            },
+            innerClearUserList: function () {
+                console.log("execute inner clear user list function.")
+                clearUserList(this);
+            },
+            appendUserList: function () {
+                this.list.push({gender: 'male', age:24, nickname: 'yang', avatar: 'http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/5003382/6018706.jpg'});
             }
         },
         created: function () {
@@ -64,6 +97,14 @@
     .img {
         margin-bottom: 20;
     }
+
+    .male {
+    }
+
+    .female {
+    }
+
+
 </style>
 
 
