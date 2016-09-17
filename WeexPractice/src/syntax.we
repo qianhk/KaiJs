@@ -1,9 +1,9 @@
 <template>
     <container>
         <text if="shown" class="large">The time is {{datetime}}</text>
-        <text>{{title}}</text>
+        <text >{{title}}</text>
         <text>{% raw %} {{getTitle()}} {% endraw %}</text>
-        <text>{{fullName}}</text>
+        <text onclick="changeName($event, 'own')">{{fullName}}</text>
         <text onclick="changeName" style="margin-left:10;margin-top: 20;">Change name</text>
     </container>
 </template>
@@ -21,9 +21,14 @@
             getTitle: function () {
                 return 'Weex Syntax Test'
             },
-            changeName: function () {
-                this.fullName = 'Terry King';
-                this.shown = !this.shown;
+            changeName: function (e, arg) {
+                console.log('arg=' + arg + " e=" + JSON.stringify(e));
+                if (arg == 'own') {
+                    this.title = arg;
+                } else {
+                    this.fullName = 'Terry King';
+                    this.shown = !this.shown;
+                }
             }
         },
         created: function () {
