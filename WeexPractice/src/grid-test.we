@@ -1,9 +1,20 @@
 <template>
     <div>
+        <text>first list</text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
                     <text>{{i}} - {{k}} - {{text}}</text>
+                </div>
+            </div>
+        </div>
+
+         <text style="margin-top:20">second list</text>
+
+        <div repeat="(i, v) in list2" class="row">
+            <div repeat="(k, obj) in v" class="item" style="flex:{{obj.flex}}">
+                <div>
+                    <text>{{i}} - {{k}} - {{obj.name}}</text>
                 </div>
             </div>
         </div>
@@ -34,6 +45,50 @@
           ['A', 'B', 'C'],
           ['D', 'E', 'F'],
           ['G', 'H', 'I']
+        ],
+        list2:[
+          [
+            {
+              name: 'A',
+              flex: 1
+            },
+            {
+              name: 'B',
+              flex: 2
+            },
+            {
+              name: 'C',
+              flex: 3
+            }
+          ],
+          [
+            {
+              name: 'D',
+              flex: 1
+            },
+            {
+              name: 'E',
+              flex: 1
+            },
+            {
+              name: 'F',
+              flex: 1
+            }
+          ],
+          [
+            {
+              name: 'G',
+              flex: 1
+            },
+            {
+              name: 'H',
+              flex: 2
+            },
+            {
+              name: 'I',
+              flex: 1
+            }
+          ],
         ]
       }
     }
