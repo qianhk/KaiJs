@@ -1,0 +1,41 @@
+<template>
+    <div>
+        <div repeat="(i, v) in list" class="row">
+            <div repeat="(k, text) in v" class="item">
+                <div>
+                    <text>{{i}} - {{k}} - {{text}}</text>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style>
+ .row{
+    flex-direction: row;
+    height:80;
+  }
+
+  .item{
+    flex:1;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border-width:2;
+  }
+ 
+</style>
+
+<script>
+  module.exports = {
+    data: function () {
+      return {
+        list:[
+          ['A', 'B', 'C'],
+          ['D', 'E', 'F'],
+          ['G', 'H', 'I']
+        ]
+      }
+    }
+  }
+</script>
