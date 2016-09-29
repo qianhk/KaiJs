@@ -1,6 +1,6 @@
 <template>
     <div>
-        <text>first list</text>
+        <text value="{{title}}"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
@@ -39,8 +39,7 @@
 
 <script>
   module.exports = {
-    data: function () {
-      return {
+    data: {
         list:[
           ['A', 'B', 'C'],
           ['D', 'E', 'F'],
@@ -49,7 +48,7 @@
         list2:[
           [
             {
-              name: 'A',
+              name: 'A2',
               flex: 1
             },
             {
@@ -90,7 +89,6 @@
             }
           ],
         ]
-      }
     }
   }
 </script>

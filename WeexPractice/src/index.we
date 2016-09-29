@@ -5,7 +5,7 @@
             <text style="font-size: 42;">Hello Weex2!</text>
         </div>
 
-        <grid-test style="margin-top:40"></grid-test>
+        <grid-test title="test Title" title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
     </div>
 </template>
 
