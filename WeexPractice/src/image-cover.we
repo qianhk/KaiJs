@@ -1,7 +1,9 @@
 <template>
     <div style="flex-direction:row;flex-wrap: wrap;">
         <div repeat="{{row}}" class="grid-cell">
-              <image style="resize:cover;width:100;height:100;border-radius:100;" src="{{logoUrl}}"></image>
+              <image style="resize:stretch;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
+              <image style="resize:cover;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
+              <image style="resize:contain;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
               <text style="color:red;font-size:24;margin-top:10;">{{name}}</text>
         </div>
     </div>
@@ -11,8 +13,6 @@
 
  .grid-cell {
       width: 179.5;
-      height: 180;
-      background-color:yellow;
       flex-direction:column;
       justify-content: center;
       align-items: center;
