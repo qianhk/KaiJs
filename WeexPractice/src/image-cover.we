@@ -1,0 +1,45 @@
+<template>
+    <div style="flex-direction:row;flex-wrap: wrap;">
+        <div repeat="{{row}}" class="grid-cell">
+              <image style="resize:cover;width:100;height:100;border-radius:100;" src="{{logoUrl}}"></image>
+              <text style="color:red;font-size:24;margin-top:10;">{{name}}</text>
+        </div>
+    </div>
+</template>
+
+<style>
+
+ .grid-cell {
+      width: 179.5;
+      height: 180;
+      background-color:yellow;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+    }
+ 
+</style>
+
+<script>
+  module.exports = {
+    data: {
+        row: [
+            {
+                logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/35/57e891e142116_1777752_1474859489.jpg",
+                name: "歌手1"
+            }, {
+                logoUrl: "http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/1022413/6997380.jpg",
+                name: "明星2"
+            }
+            , {
+                logoUrl: "http://img.weixinyidu.com/150901/4a74dca5.jpg",
+                name: "歌手3"
+            }
+            , {
+                logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/0/573088d40c8ac_0_1462798548.jpg",
+                name: "明星4"
+            }
+        ]
+    }
+  }
+</script>
