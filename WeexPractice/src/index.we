@@ -23,10 +23,11 @@
 <script>
     module.exports = {
         data: {
+            ctHeight: -1,
             img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg'
         },
         ready: function () {
-            this.ctHeight = this.$getConfig().env.deviceHeight
+            this.ctHeight = this.$getConfig().env.deviceHeight;
         }
     }
 </script>

@@ -1,6 +1,8 @@
 <template>
     <div>
-        <text value="{{title}}"></text>
+        <text value="title1={{title}}"></text>
+        <text value="title2={{title2}}"></text>
+        <text value="title3={{title3}}"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
@@ -40,6 +42,7 @@
 <script>
   module.exports = {
     data: {
+      title3: "default title3",
         list:[
           ['A', 'B', 'C'],
           ['D', 'E', 'F'],
