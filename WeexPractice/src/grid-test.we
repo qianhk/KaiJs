@@ -6,7 +6,7 @@
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
-                    <text>{{i}} - {{k}} - {{text}}</text>
+                    <text vid="{{i}}_{{k}}_{{text}}" onclick="onTextClick">{{i}} - {{k}} - {{text}}</text>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div repeat="(i, v) in list2" class="row">
             <div repeat="(k, obj) in v" class="item" style="flex:{{obj.flex}}">
                 <div>
-                    <text>{{i}} - {{k}} - {{obj.name}}</text>
+                    <text id2="{{i}}_{{k}}_{{obj.name}}" onclick="onTextClick">{{i}} - {{k}} - {{obj.name}}</text>
                 </div>
             </div>
         </div>
@@ -41,6 +41,12 @@
 
 <script>
   module.exports = {
+    methods: {
+        onTextClick: function(e) {
+          console.log("onTextClick " + JSON.stringify(e));
+          // console.log("onTextClick " + e.target.attr.id2);
+        }
+    },
     data: {
       title3: "default title3",
         list:[
