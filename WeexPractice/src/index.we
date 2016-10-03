@@ -2,8 +2,8 @@
     <div>
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
-            <text style="font-size: 42;">Hello Weex2!</text>
-            <text style="font-size: 42;" class="singleLine">long long long long text!, long long long long text2!, long long long long text3!</text>
+            <text style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
+            <text style="font-size: 42; color:rgba(255,0,0, 0.2)" class="singleLine">long long long long text!, long long long long text2!, long long long long text3!</text>
         </div>
 
         <grid-test title="test Title" title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
