@@ -9,6 +9,8 @@
             </div>
         </div>
     </scroller>
+
+
 </template>
 
 <style>
@@ -19,7 +21,7 @@
       justify-content: center;
       align-items: center;
     }
- 
+
 </style>
 
 <script>
@@ -29,13 +31,14 @@
             {
                 logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/35/57e891e142116_1777752_1474859489.jpg",
                 name: "方图200像素"
-            }, {
+            }
+            , {
                 logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/0/573b36192ba26_0_1463498265.png",
                 name: "方图3840像素"
             }
             , {
-                logoUrl: "http://img.weixinyidu.com/150901/4a74dca5.jpg",
-                name: "高图500*750"
+                logoUrl: "http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/161/6997365.jpg?testid=3",
+                name: "高图720*1280"
             }
             , {
                 logoUrl: "http://f.hiphotos.baidu.com/image/pic/item/00e93901213fb80e0ee553d034d12f2eb9389484.jpg",
