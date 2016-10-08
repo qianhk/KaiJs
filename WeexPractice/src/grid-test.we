@@ -1,8 +1,8 @@
 <template>
     <div>
-        <text value="title1={{title}}"></text>
-        <text value="title2={{title2}}"></text>
-        <text value="title3={{title3}}"></text>
+        <text value="sectionTitle={{sectionTitle}}"></text>
+        <text value="sectionTitle2={{sectionTitle2}}"></text>
+        <text value="sectionTitle3={{sectionTitle3}}"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
@@ -36,7 +36,7 @@
     align-items:center;
     border-width:2;
   }
- 
+
 </style>
 
 <script>
@@ -48,7 +48,7 @@
         }
     },
     data: {
-      title3: "default title3",
+        sectionTitle3: "default title3",
         list:[
           ['A', 'B', 'C'],
           ['D', 'E', 'F'],
