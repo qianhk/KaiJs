@@ -2,11 +2,14 @@
     <container> //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
-            <text style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
+            <text id="id_weex2" style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
             <text style="font-size: 42; color:rgba(255,0,0, 0.2)" class="singleLine">long long long long text!, long long long long text2!, long long long long text3!</text>
         </div>
 
         <grid-test section-title="test Title" section-title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
+
+        <text style="font-size: 42;color:rgb(255,0,0)" onclick="onClick('returnWeex2')">Return to Weex2 text</text>
+
     </container>
 </template>
 
@@ -27,10 +30,22 @@
 </style>
 
 <script>
+    var dom = require('@weex-module/dom');
     module.exports = {
         data: {
             ctHeight: -1,
             img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg'
+        },
+        methods: {
+            onClick: function(id) {
+                console.log('onclick id=' + id);
+                if (id == 'returnWeex2') {
+                    let weexTitle2 = this.$el('id_weex2')
+                    dom.scrollToElement(weexTitle2, {
+                        offset: -80
+                    })
+                }
+            },
         },
         ready: function() {
             this.ctHeight = this.$getConfig().env.deviceHeight;
