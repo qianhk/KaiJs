@@ -2,7 +2,7 @@
     <container>
         <text value="sectionTitle={{sectionTitle}}" onclick="onViewClick(1,$event)"></text>
         <text value="sectionTitle2={{sectionTitle2}}" onclick="onViewClick('second')"></text>
-        <text value="sectionTitle3={{sectionTitle3}}" onclick="onViewClick(sectionTitle3)"></text>
+        <text value="sectionTitle3={{sectionTitle3}}" onclick="onViewClick(sectionTitle3)" style="lines:2;text-overflow:ellipsis;"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
@@ -48,10 +48,11 @@
             onViewClick: function(arg, e) {
                 console.log("onTextClick arg=" + arg + " e=" + JSON.stringify(e));
                 this.$dispatch('notifyFromChild', arg);
+                this.$broadcast('notifyFromChild', 'broadcast' + arg);
             },
         },
         data: {
-            sectionTitle3: "default title3",
+            sectionTitle3: "default title3 长长的文本啊，哈哈 The property color support multiple fomats of values, contains rgb, rgba, #fff, #ffffff, named-color 足足有4行的文本",
             list: [
                 ['A', 'B', 'C'],
                 ['D', 'E', 'F'],
@@ -89,6 +90,11 @@
                     flex: 1
                 }],
             ]
+        },
+        ready: function() {
+            this.$on('notifyFromParent', function(e) {
+                console.log('notify from parent, e.detail = ' + e.detail);
+            });
         }
     }
 </script>
