@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <text value="sectionTitle={{sectionTitle}}"></text>
-        <text value="sectionTitle2={{sectionTitle2}}"></text>
-        <text value="sectionTitle3={{sectionTitle3}}"></text>
+    <container>
+        <text value="sectionTitle={{sectionTitle}}" onclick="onViewClick(1,$event)"></text>
+        <text value="sectionTitle2={{sectionTitle2}}" onclick="onViewClick('second')"></text>
+        <text value="sectionTitle3={{sectionTitle3}}" onclick="onViewClick(sectionTitle3)"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>
@@ -11,7 +11,7 @@
             </div>
         </div>
 
-         <text style="margin-top:20">second list</text>
+        <text style="margin-top:20">second list</text>
 
         <div repeat="(i, v) in list2" class="row">
             <div repeat="(k, obj) in v" class="item" style="flex:{{obj.flex}}">
@@ -20,84 +20,74 @@
                 </div>
             </div>
         </div>
-    </div>
+    </container>
 </template>
 
 <style>
- .row{
-    flex-direction: row;
-    height:80;
-  }
+    .row {
+        flex-direction: row;
+        height: 80;
+    }
 
-  .item{
-    flex:1;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    border-width:2;
-  }
-
+    .item {
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-width: 2;
+    }
 </style>
 
 <script>
-  module.exports = {
-    methods: {
-        onTextClick: function(e) {
-          console.log("onTextClick " + JSON.stringify(e));
-          // console.log("onTextClick " + e.target.attr.id2);
+    module.exports = {
+        methods: {
+            onTextClick: function(e) {
+                console.log("onTextClick " + JSON.stringify(e));
+                // console.log("onTextClick " + e.target.attr.id2);
+            },
+            onViewClick: function(arg, e) {
+                console.log("onTextClick arg=" + arg + " e=" + JSON.stringify(e));
+            },
+        },
+        data: {
+            sectionTitle3: "default title3",
+            list: [
+                ['A', 'B', 'C'],
+                ['D', 'E', 'F'],
+                ['G', 'H', 'I']
+            ],
+            list2: [
+                [{
+                    name: 'A2',
+                    flex: 1
+                }, {
+                    name: 'B',
+                    flex: 2
+                }, {
+                    name: 'C',
+                    flex: 3
+                }],
+                [{
+                    name: 'D',
+                    flex: 1
+                }, {
+                    name: 'E',
+                    flex: 1
+                }, {
+                    name: 'F',
+                    flex: 1
+                }],
+                [{
+                    name: 'G',
+                    flex: 1
+                }, {
+                    name: 'H',
+                    flex: 2
+                }, {
+                    name: 'I',
+                    flex: 1
+                }],
+            ]
         }
-    },
-    data: {
-        sectionTitle3: "default title3",
-        list:[
-          ['A', 'B', 'C'],
-          ['D', 'E', 'F'],
-          ['G', 'H', 'I']
-        ],
-        list2:[
-          [
-            {
-              name: 'A2',
-              flex: 1
-            },
-            {
-              name: 'B',
-              flex: 2
-            },
-            {
-              name: 'C',
-              flex: 3
-            }
-          ],
-          [
-            {
-              name: 'D',
-              flex: 1
-            },
-            {
-              name: 'E',
-              flex: 1
-            },
-            {
-              name: 'F',
-              flex: 1
-            }
-          ],
-          [
-            {
-              name: 'G',
-              flex: 1
-            },
-            {
-              name: 'H',
-              flex: 2
-            },
-            {
-              name: 'I',
-              flex: 1
-            }
-          ],
-        ]
     }
-  }
 </script>

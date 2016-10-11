@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <container> //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
             <text style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
@@ -7,7 +7,7 @@
         </div>
 
         <grid-test section-title="test Title" section-title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
-    </div>
+    </container>
 </template>
 
 <style>
@@ -21,7 +21,7 @@
     }
 
     .singleLine {
-        lines:1;
+        lines: 1;
         text-overflow: ellipsis;
     }
 </style>
@@ -32,7 +32,7 @@
             ctHeight: -1,
             img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg'
         },
-        ready: function () {
+        ready: function() {
             this.ctHeight = this.$getConfig().env.deviceHeight;
         }
     }
