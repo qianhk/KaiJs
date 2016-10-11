@@ -47,6 +47,7 @@
             },
             onViewClick: function(arg, e) {
                 console.log("onTextClick arg=" + arg + " e=" + JSON.stringify(e));
+                this.$dispatch('notifyFromChild', arg);
             },
         },
         data: {

@@ -2,13 +2,14 @@
     <container> //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
-            <text id="id_weex2" style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
+            <text id="id_weex2" customId="xxxx-test" style="font-size: 42;color:rgb(255,0,0)">Hello Weex2!</text>
             <text style="font-size: 42; color:rgba(255,0,0, 0.2)" class="singleLine">long long long long text!, long long long long text2!, long long long long text3!</text>
         </div>
 
-        <grid-test section-title="test Title" section-title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
+        <grid-test id='id_grid_test' section-title="test Title" section-title2="height={{ctHeight}}" style="margin-top:40"></grid-test>
 
         <text style="font-size: 42;color:rgb(255,0,0)" onclick="onClick('returnWeex2')">Return to Weex2 text</text>
+        <text style="font-size: 42;color:rgb(255,0,0)" onclick="onClick('getWeex2Info')">operate Weex2 text</text>
 
     </container>
 </template>
@@ -40,15 +41,25 @@
             onClick: function(id) {
                 console.log('onclick id=' + id);
                 if (id == 'returnWeex2') {
-                    let weexTitle2 = this.$el('id_weex2')
+                    let weexTitle2 = this.$el('id_weex2');
+                    console.log('this dom el is ' + 'type(weexTitle2)' + "value: " + weexTitle2);
                     dom.scrollToElement(weexTitle2, {
                         offset: -80
-                    })
+                    });
+                    console.log('this dom vm is ' + this.$vm(id));
+                    this.$dispatch('notifyFromChild', 'return from weex2 title');
+                } else if (id == 'getWeex2Info') {
+                    let gridTest = this.$('id_grid_test');
+                    console.log('this dom $(\'gridTest\') is: ' + 'JSON.stringify(gridTest)'); //Uncaught TypeError: Converting circular structure to JSON
+                    gridTest.sectionTitle3 = "change the text value for 3";
                 }
             },
         },
         ready: function() {
             this.ctHeight = this.$getConfig().env.deviceHeight;
+            this.$on('notifyFromChild', function(e) {
+                console.log('notify from child, e.detail = ' + e.detail);
+            });
         }
     }
 </script>
