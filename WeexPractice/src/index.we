@@ -83,12 +83,28 @@
                     utils.toast("this is toast from other file");
                 }
             },
+            foo: function (fn) {
+                return fn();
+            },
+            bar: function () {
+                console.log('from bar() this is : ' + require('./common/utils').simpleStringify(this));
+                return this.result;
+            },
+        },
+        init: function() {
+            console.log('ViewModel constructor begins')
+        },
+        created: function() {
+            console.log('Data observation finished')
         },
         ready: function() {
+            console.log('Virtual DOM finished')
             this.ctHeight = this.$getConfig().env.deviceHeight;
             this.$on('notifyFromChild', function(e) {
                 console.log('notify from child, e.detail = ' + e.detail);
             });
+            console.log('direct log bar() result:' + this.bar());
+            console.log('log bar() by foo() result:' + this.foo(this.bar.bind(this)));
         },
         events: {
             customType1: function(e) {

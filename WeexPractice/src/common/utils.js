@@ -17,9 +17,27 @@ function toast(message) {
     modal.toast({message:message, length:1});
 }
 
+function simpleStringify(object) {
+    var simpleObject = {};
+    for (var prop in object ) {
+        // console.log('simpleStringify typeof(' + prop + ')=' + typeof(object[prop]));
+        if (!object.hasOwnProperty(prop)){
+            continue;
+        }
+        if (typeof(object[prop]) == 'object'){
+            continue;
+        }
+        if (typeof(object[prop]) == 'function'){
+            continue;
+        }
+        simpleObject[prop] = object[prop];
+    }
+    return JSON.stringify(simpleObject); // returns cleaned up JSON
+}
 
 module.exports = {
         add: add,
         minus: minus,
         toast: toast,
+        simpleStringify: simpleStringify,
 };
