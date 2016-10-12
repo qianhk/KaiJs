@@ -49,6 +49,7 @@
                 console.log("onTextClick arg=" + arg + " e=" + JSON.stringify(e));
                 this.$dispatch('notifyFromChild', arg);
                 this.$broadcast('notifyFromChild', 'broadcast' + arg);
+                this.$emit('customType1', 'from grid-test ');
             },
         },
         data: {

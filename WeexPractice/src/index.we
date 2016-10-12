@@ -3,6 +3,7 @@
         //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
         //dispatch 可以同级用， 不能往下级we用， 能往上级用
         //broadcast 可以同级用， 可以往下级we用， 不能往上级用
+        //emit 貌似不能跨文件调用到events里的function
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
             <text id="id_weex2" customId="xxxx-test" style="font-size: 28;color:rgb(255,0,0)">Hello Weex1342!</text>
@@ -67,9 +68,12 @@
                 } else if (id == 'addNumber') {
                     var utils = require('./common/utils')
                     this.result = 'use common utils: add(3,5)=' + utils.add(3, 5);
+                    this.$emit('customType1', 'haha ' + id);
+
                 } else if (id == 'minusNumber') {
                     var utils = require('./common/utils')
                     this.result = 'use common utils: minus(3,5)=' + utils.minus(3, 5);
+                    this.$emit('customType2', 'haha2 ' + id);
 
                     // let utils = require('./common/utils');
                     // let {add, mimus} = utils;
@@ -85,7 +89,15 @@
             this.$on('notifyFromChild', function(e) {
                 console.log('notify from child, e.detail = ' + e.detail);
             });
-        }
+        },
+        events: {
+            customType1: function(e) {
+                console.log('customType1: ' + JSON.stringify(e));
+            },
+            customType2: function(e) {
+                console.log('customType2: ' + JSON.stringify(e));
+            },
+        },
     }
 </script>
 
