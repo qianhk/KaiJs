@@ -15,7 +15,7 @@ public class WXApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        WXEnvironment.addCustomOptions("keyWeexAppName", "KeyWeexValueSample");
+        WXEnvironment.addCustomOptions("kaiWeexAppNameKey", "KeyWeexValueSample");
         InitConfig.Builder builder = new InitConfig.Builder();
         builder.setImgAdapter(new ImageAdapter());
         WXSDKEngine.initialize(this, builder.build());

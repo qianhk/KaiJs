@@ -57,7 +57,7 @@
                     dom.scrollToElement(weexTitle2, {
                         offset: -80
                     });
-                    console.log('this dom vm is ' + this.$vm(id));
+                    console.log('this dom vm is ' + this.$vm('id_weex2'));
                     this.$dispatch('notifyFromChild', 'come for same grade. dispatch');
                     this.$dispatch('notifyFromChild', 'come for same grade. broadcast');
                 } else if (id == 'getWeex2Info') {
@@ -98,7 +98,7 @@
             console.log('Data observation finished')
         },
         ready: function() {
-            console.log('Virtual DOM finished')
+            console.log('Virtual DOM finished, config is: ' + JSON.stringify(this.$getConfig()));
             this.ctHeight = this.$getConfig().env.deviceHeight;
             this.$on('notifyFromChild', function(e) {
                 console.log('notify from child, e.detail = ' + e.detail);
