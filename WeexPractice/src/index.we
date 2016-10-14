@@ -1,5 +1,5 @@
 <template>
-    <container>
+    <scroller>
         //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
         //dispatch 可以同级用， 不能往下级we用， 能往上级用
         //broadcast 可以同级用， 可以往下级we用， 不能往上级用
@@ -18,10 +18,14 @@
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('addNumber')">add number</text>
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('minusNumber')">minus number</text>
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('testToast')">test Toast</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('showConfig')">show Config</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('alert')">alert</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('confirm')">confirm</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('prompt')">prompt</text>
 
         <text style="font-size: 20;color:rgb(0,255,0)">{{result}}</text>
 
-    </container>
+    </scroller>
 </template>
 
 <style>
@@ -81,6 +85,44 @@
                 } else if (id == 'testToast') {
                     var utils = require('./common/utils')
                     utils.toast("this is toast from other file");
+                } else if (id == 'showConfig') {
+                    this.result = JSON.stringify(this.$getConfig());
+                    console.log('show Config: ' + this.result);
+                    console.log('Virtual DOM finished, id=' + this.id  + ' config is: ' + JSON.stringify(this.$getConfig()));
+                } else if (id == 'alert') {
+                    var arg1 = 'I am alert!';
+                    var arg2 = 'I am ok';
+                    var modal = require('@weex-module/modal');
+                    modal.alert({
+                        message: arg1,
+                        okTitle: arg2
+                    }, function(e) {
+                        console.log('you choose action e:' + e);
+                    })
+                } else if (id == 'confirm') {
+                    var arg1 = 'I am alert!'
+                    var arg2 = 'I am ok'
+                    var arg3 = 'I am cancel'
+                    var modal = require('@weex-module/modal');
+                    modal.confirm({
+                        message: arg1,
+                        okTitle: arg2,
+                        cancelTitle: arg3
+                    }, function(e) {
+                        console.log('you choose action e:' + e);
+                    });
+                } else if (id == 'prompt') {
+                    var arg1 = 'I am alert!'
+                    var arg2 = 'I am ok'
+                    var arg3 = 'I am cancel'
+                    var modal = require('@weex-module/modal');
+                    modal.prompt({
+                        message: arg1,
+                        okTitle: arg2,
+                        cancelTitle: arg3
+                    }, function(e) {
+                        console.log('you choose action e:' + JSON.stringify(e));
+                    });
                 }
             },
             foo: function (fn) {
@@ -98,7 +140,7 @@
             console.log('Data observation finished')
         },
         ready: function() {
-            console.log('Virtual DOM finished, config is: ' + JSON.stringify(this.$getConfig()));
+            console.log('Virtual DOM finished, id=' + this.id  + ' config is: ' + JSON.stringify(this.$getConfig()));
             this.ctHeight = this.$getConfig().env.deviceHeight;
             this.$on('notifyFromChild', function(e) {
                 console.log('notify from child, e.detail = ' + e.detail);
@@ -122,5 +164,6 @@
         ctHeight: -1,
         img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
         result: '此处显示结果 data from script type=\'data\'',
+        // id: -1,
     }
 </script>
