@@ -1,9 +1,5 @@
 <template>
     <scroller>
-        //根节点官方要求只能是container、list、scroller之一, 但实际用div也行
-        //dispatch 可以同级用， 不能往下级we用， 能往上级用
-        //broadcast 可以同级用， 可以往下级we用， 不能往上级用
-        //emit 貌似不能跨文件调用到events里的function
         <div class="ct">
             <image class="img" style="width: 100px; height: 100px;" src="{{img}}"></image>
             <text id="id_weex2" customId="xxxx-test" style="font-size: 28;color:rgb(255,0,0)">Hello Weex1342!</text>
@@ -23,6 +19,9 @@
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('confirm')">confirm</text>
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('prompt')">prompt</text>
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('jumpOther')">jump to other page</text>
+
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('setInterval')">timer setInterval</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clearInterval')">timer clearInterval</text>
 
         <text style="font-size: 20;color:rgb(0,255,0)">{{result}}</text>
 
@@ -47,6 +46,12 @@
 
 <script>
     var dom = require('@weex-module/dom');
+    var timer;
+    var times = 0;
+    //根节点官方要求只能是container、list、scroller之一, 但实际用div也行;
+    //dispatch 可以同级用， 不能往下级we用， 能往上级用;
+    //broadcast 可以同级用， 可以往下级we用， 不能往上级用;
+    //emit 貌似不能跨文件调用到events里的function;
     module.exports = {
         data: {
             ctHeight: -1,
@@ -77,9 +82,9 @@
 
                     var storage = require('@weex-module/storage');
                     storage.setItem('bar', 'bar-value', function(e) {
-                      // 'e'是一个包含'result'和'data'的对象. e.result判断'setItem'操作是否执行成功.
-                      // e.data返回'undefined'表示设置成功，返回'invalid_param'表示key/value为""/null
-                      console.log('storage.setItem， e:' + JSON.stringify(e));
+                        // 'e'是一个包含'result'和'data'的对象. e.result判断'setItem'操作是否执行成功.
+                        // e.data返回'undefined'表示设置成功，返回'invalid_param'表示key/value为""/null
+                        console.log('storage.setItem， e:' + JSON.stringify(e));
                     });
 
                 } else if (id == 'minusNumber') {
@@ -93,9 +98,9 @@
 
                     var storage = require('@weex-module/storage');
                     storage.getItem('bar', function(e) {
-                      // 'e'是一个包含'result'和'data'的对象.
-                      // 使用'e.data'获取键的值，如果没有找到对应的键值则返回'undefined'.
-                      console.log('storage.getItem e:' + JSON.stringify(e));
+                        // 'e'是一个包含'result'和'data'的对象.
+                        // 使用'e.data'获取键的值，如果没有找到对应的键值则返回'undefined'.
+                        console.log('storage.getItem e:' + JSON.stringify(e));
                     });
 
                 } else if (id == 'testToast') {
@@ -104,15 +109,15 @@
 
                     var storage = require('@weex-module/storage');
                     storage.getAllKeys(function(e) {
-                      // 'e'是一个包含'result'和'data'的对象.
-                      // e.data返回键名组成的数组.
-                      console.log('storage.getAllKeys e:' + JSON.stringify(e));
+                        // 'e'是一个包含'result'和'data'的对象.
+                        // e.data返回键名组成的数组.
+                        console.log('storage.getAllKeys e:' + JSON.stringify(e));
                     });
 
                 } else if (id == 'showConfig') {
                     this.result = JSON.stringify(this.$getConfig());
                     console.log('show Config: ' + this.result);
-                    console.log('Virtual DOM finished, id=' + this.id  + ' config is: ' + JSON.stringify(this.$getConfig()));
+                    console.log('Virtual DOM finished, id=' + this.id + ' config is: ' + JSON.stringify(this.$getConfig()));
                 } else if (id == 'alert') {
                     var arg1 = 'I am alert!';
                     var arg2 = 'I am ok';
@@ -150,20 +155,28 @@
                 } else if (id == 'jumpOther') {
                     var params = {
                         'url': 'image-cover.js',
-                        'animated' : 'true',
+                        'animated': 'true',
                     }
                     var navigator = require('@weex-module/navigator');
                     navigator.push(params, function(e) {
                         console.log('navigator.push, e:' + JSON.stringify(e));
                     });
+                } else if (id == 'setInterval') {
+                    timer = setInterval(this.startTimer.bind(this), 1000);
+                } else if (id == 'clearInterval') {
+                    clearInterval(timer);
                 }
             },
-            foo: function (fn) {
+            foo: function(fn) {
                 return fn();
             },
-            bar: function () {
+            bar: function() {
                 console.log('from bar() this is : ' + require('./common/utils').simpleStringify(this));
                 return this.result;
+            },
+            startTimer: function() {
+                ++times;
+                console.log('startTimer times=' + times);
             },
         },
         init: function() {
@@ -173,7 +186,7 @@
             console.log('Data observation finished')
         },
         ready: function() {
-            console.log('Virtual DOM finished, id=' + this.id  + ' config is: ' + JSON.stringify(this.$getConfig()));
+            console.log('Virtual DOM finished, id=' + this.id + ' config is: ' + JSON.stringify(this.$getConfig()));
             this.ctHeight = this.$getConfig().env.deviceHeight;
             this.$on('notifyFromChild', function(e) {
                 console.log('notify from child, e.detail = ' + e.detail);
