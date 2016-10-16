@@ -8,7 +8,7 @@
 </we-element>
 
 <template>
-    <scroller>
+    <scroller show-scrollbar='true' scroll-direction='vertical'>
 
         <template-at-same-we-file>
             <text>template-at-same-we-file use1</text>
