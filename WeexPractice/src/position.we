@@ -1,0 +1,20 @@
+<template>
+    <scroller>
+        <div style="flex-direction: column;background-color:#0F0;height:3000;">
+            <text value="normal position" style="top: 10; left: 50; height: 60;"></text>
+            <text value="sticky position" style="position: sticky; top: 0; left: 100; background-color: rgba(0, 0, 255, 0.5); height:60;"
+                onclick="onClickView"></text>
+            <text value="absolute position" style="position: absolute; top: 180; left: 150;"></text>
+        </div>
+    </scroller>
+</template>
+
+<script>
+    module.exports = {
+        methods: {
+            onClickView: function(e) {
+                require('@weex-module/modal').toast({message:'you click sticky text'});
+            },
+        }
+    }
+</script>

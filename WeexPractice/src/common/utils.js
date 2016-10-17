@@ -14,7 +14,7 @@ function minus(arg1, arg2) {
 
 function toast(message) {
     // let modal = require('@weex-module/modal');
-    modal.toast({message:message, length:1});
+    modal.toast({message:message, duration:1});
 }
 
 function simpleStringify(object) {
