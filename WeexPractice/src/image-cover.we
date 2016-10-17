@@ -1,50 +1,78 @@
 <template>
-    <scroller>
-        <div style="flex-direction:row;flex-wrap: wrap;">
-            <div repeat="{{row}}" class="grid-cell">
-                <image style="resize:stretch;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
-                <image style="resize:cover;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
-                <image style="resize:contain;width:140;height:140;border-radius:140;" src="{{logoUrl}}"></image>
-                <text style="color:red;font-size:24;margin-top:10;">{{name}}</text>
+    <scroller style="background-color:gray;">
+        <refresh class="refresh" onRefresh="handleRefresh" display="{{displayRefresh}}">
+            <loading-indicator style="height:60;width:60;color:rgb(238, 162, 54)"></loading-indicator>
+            <text style="margin-left:36;" class="font12 color-c2a50">下拉刷新....</text>
+        </refresh>
+        <div>
+            <div style="flex-direction:row;flex-wrap:wrap;">
+                <text style="color:red">模拟标记1</text>
+                <text style="margin-left:20;">测试wrap22223 wrap：换行，第一行在上方。 wrap-reverse：换行，第一行在下方</text>
+            </div>
+            <div style="flex-direction:row;flex-wrap: wrap;">
+                <div repeat="{{row}}" class="grid-cell">
+                    <image style="resize:stretch;width:140;height:140;border-radius:140;margin-top:20;" src="{{logoUrl}}"></image>
+                    <image style="resize:cover;width:140;height:140;border-radius:140;margin-top:10;" src="{{logoUrl}}"></image>
+                    <image style="resize:contain;width:140;height:140;border-radius:140;margin-top:10;" src="{{logoUrl}}"></image>
+                    <image style="resize:cover;width:140;height:240;border-radius:10;margin-top:10;" src="{{logoUrl}}"></image>
+                    <image style="resize:cover;width:340;height:140;border-radius:10;margin-top:10;" src="{{logoUrl}}"></image>
+                    <text style="color:red;font-size:24;margin-top:10;">{{name}}</text>
+                </div>
             </div>
         </div>
     </scroller>
-
-
 </template>
 
 <style>
+    .grid-cell {
+        flex-direction: column;
+        margin-left: 10;
+        margin-top: 10;
+        justify-content: center;
+        align-items: center;
+    }
 
- .grid-cell {
-      width: 180;
-      flex-direction:column;
-      justify-content: center;
-      align-items: center;
+    .refresh {
+        width: 750;
+        height: 170;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
 </style>
 
 <script>
-  module.exports = {
-    data: {
-        row: [
-            {
-                logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/35/57e891e142116_1777752_1474859489.jpg",
-                name: "方图200像素"
-            }
-            , {
-                logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/0/573b36192ba26_0_1463498265.png",
-                name: "方图3840像素"
-            }
-            , {
-                logoUrl: "http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/161/6997365.jpg?testid=3",
-                name: "高图720*1280"
-            }
-            , {
-                logoUrl: "http://f.hiphotos.baidu.com/image/pic/item/00e93901213fb80e0ee553d034d12f2eb9389484.jpg",
-                name: "扁图900*569"
-            }
-        ]
+    module.exports = {
+        data: {
+            displayRefresh: 'hide',
+            row: [
+                // {
+                //     logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/35/57e891e142116_1777752_1474859489.jpg",
+                //     name: "方图200像素"
+                // },
+                // {
+                //     logoUrl: "http://pic.xiami.net/images/trade/ams_fandom_avatar/0/573b36192ba26_0_1463498265.png",
+                //     name: "方图3840像素"
+                // },
+                {
+                    logoUrl: "http://3p.pic.ttdtweb.com/3p.ttpod.com/singer/161/6997365.jpg?testid=3",
+                    name: "高图720*1280"
+                },
+                {
+                    logoUrl: "http://f.hiphotos.baidu.com/image/pic/item/00e93901213fb80e0ee553d034d12f2eb9389484.jpg",
+                    name: "扁图900*569"
+                },
+            ],
+        },
+        methods: {
+            handleRefresh: function(e) {
+                let that = this;
+                that.displayRefresh = 'show'
+                setTimeout(() => {
+                    that.displayRefresh = 'hide'
+                }, 2000);
+            },
+        }
     }
-  }
 </script>
