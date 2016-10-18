@@ -1,12 +1,14 @@
 <template>
     <div>
-        <list class="list">
+        <list class="list" ontouchstart="onTouchStart" ontouchend="onTouchEnd"
+            ontouchcancel="onTouchCancel" ontouchmove="onTouchMove">
             <header>
                 <text>此处是listview的header1</text>
                 <text>此处是listview的header2</text>
                 <text>此处是listview的header3</text>
             </header>
-            <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}">
+            <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}" ontouchstart="onTouchStart" ontouchend="onTouchEnd"
+                ontouchcancel="onTouchCancel" ontouchmove="onTouchMove">
                 <div class="item">
                     <text class="item-title">row {{id}}</text>
                 </div>
@@ -74,7 +76,19 @@
                 this.appearIds = appearIds;
                 this.appearMax = appearIds[appearIds.length - 1];
                 this.appearMin = appearIds[0];
-            }
+            },
+            onTouchStart: function(e) {
+                console.log("onTouchStart " + JSON.stringify(e));
+            },
+            onTouchEnd: function(e) {
+                console.log("onTouchEnd " + JSON.stringify(e));
+            },
+            onTouchMove: function(e) {
+                console.log("onTouchMove " + JSON.stringify(e));
+            },
+            onTouchCancel: function(e) {
+                console.log("onTouchCancel " + JSON.stringify(e));
+            },
         },
         data: {
             appearMin: 1,

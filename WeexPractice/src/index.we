@@ -46,7 +46,8 @@
             <switch checked="true"></switch>
         </div>
 
-        <text style="font-size: 20;color:rgb(0,255,0)">{{result}}</text>
+        <text style="font-size: 20;color:rgb(0,255,0)" ontouchstart="onTouchStart" ontouchend="onTouchEnd"
+            ontouchcancel="onTouchCancel" ontouchmove="onTouchMove">{{result}}</text>
 
     </scroller>
 </template>
@@ -200,6 +201,18 @@
                     var clipboard = require('@weex-module/clipboard');
                     clipboard.setString("string from kai weex test app.");
                 }
+            },
+            onTouchStart: function(e) {
+                console.log("ononTouchStart " + JSON.stringify(e));
+            },
+            onTouchEnd: function(e) {
+                console.log("ononTouchEnd " + JSON.stringify(e));
+            },
+            onTouchMove: function(e) {
+                console.log("ononTouchMove " + JSON.stringify(e));
+            },
+            onTouchCancel: function(e) {
+                console.log("ononTouchCancel " + JSON.stringify(e));
             },
             foo: function(fn) {
                 return fn();
