@@ -5,7 +5,7 @@
                 <image class="thumb" src="{{pictureUrl}}"></image>
                 <text class="title">{{title}}</text>
             </div>
-             <indicator class="indicator"></indicator>
+            <indicator class="indicator"></indicator>
         </slider>
 
         <div class="container" onclick="goWeexSite">
@@ -22,6 +22,9 @@
                 <text class="title">Objective C</text>
             </div>
         </div>
+
+        <video class="video" auto-play="true" play-status="play" src="https://github.com/depthlove/test-files/blob/master/2015-09-17.mp4?raw=true"
+            style="width:480;height:360;"></video>
 </template>
 
 <style>
@@ -55,15 +58,15 @@
     }
 
     .indicator {
-        width:750;
-        height:50;
+        width: 750;
+        height: 50;
         top: 150;
         background-color: rgba(255, 0, 0, 0.3);
-        position:absolute;
+        position: absolute;
         item-color: red;
         item-selectedColor: blue;
         item-size: 16;
-  }
+    }
 </style>
 
 <script>
@@ -72,14 +75,19 @@
             intervalValue: "1000",
             isShowIndicators: "true",
             isAutoPlay: "true",
-            itemList: [
-                {title: 'Java', pictureUrl: 'http://t.cn/RGE3uo9'},
-                {title: 'Objective C', pictureUrl: 'http://t.cn/RGE31hq'},
-                {title: 'JavaScript', pictureUrl: 'http://t.cn/RGE3AJt'}
-            ]
+            itemList: [{
+                title: 'Java',
+                pictureUrl: 'http://t.cn/RGE3uo9'
+            }, {
+                title: 'Objective C',
+                pictureUrl: 'http://t.cn/RGE31hq'
+            }, {
+                title: 'JavaScript',
+                pictureUrl: 'http://t.cn/RGE3AJt'
+            }]
         },
         methods: {
-            goWeexSite: function () {
+            goWeexSite: function() {
                 this.$openURL('http://alibaba.github.io/weex/')
             }
         }

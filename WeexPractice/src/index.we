@@ -227,6 +227,11 @@
             });
             console.log('direct log bar() result:' + this.bar());
             console.log('log bar() by foo() result:' + this.foo(this.bar.bind(this)));
+            var vm = this;
+            vm.$on('tabBar.onClick',function(e){
+              var detail= e.detail;
+              nativeLog('tabBar.onClick ' + detail.index);
+            });
         },
         events: {
             customType1: function(e) {
