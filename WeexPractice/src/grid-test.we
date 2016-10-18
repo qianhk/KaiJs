@@ -1,8 +1,8 @@
 <template>
     <container>
-        <text value="sectionTitle={{sectionTitle}}" onclick="onViewClick(1,$event)"></text>
-        <text value="sectionTitle2={{sectionTitle2}}" onclick="onViewClick('second')"></text>
-        <text value="sectionTitle3={{sectionTitle3}}" onclick="onViewClick(sectionTitle3)" style="lines:2;text-overflow:ellipsis;"></text>
+        <text value="sectionTitle={{sectionTitle}}" onclick="onViewClick(1,$event)" style="text-decoration:blink;"></text>
+        <text value="sectionTitle2={{sectionTitle2}}" onclick="onViewClick('second')" style="text-decoration:line-through;"></text>
+        <text value="sectionTitle3={{sectionTitle3}}" onclick="onViewClick(sectionTitle3)" style="lines:2;text-overflow:ellipsis;text-decoration:underline;"></text>
         <div repeat="(i, v) in list" class="row">
             <div repeat="(k, text) in v" class="item">
                 <div>

@@ -1,10 +1,11 @@
 <template>
     <div style="flex-direction: column;">
-        <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}">
-            <div class="slider-pages" repeat="{{itemList}}" onclick="goWeexSite">
+        <slider class="slider" interval="{{intervalValue}}" auto-play="{{isAutoPlay}}" style="background-color:rgba(0, 255, 0, 0.5)">
+            <div class="slider-pages" repeat="{{itemList}}" onclick="goWeexSite" style="background-color:rgba(0, 0, 255, 0.5)">
                 <image class="thumb" src="{{pictureUrl}}"></image>
                 <text class="title">{{title}}</text>
             </div>
+             <indicator class="indicator"></indicator>
         </slider>
 
         <div class="container" onclick="goWeexSite">
@@ -45,14 +46,24 @@
     .slider {
         margin: 18;
         width: 714;
-        height: 230;
+        height: 200;
     }
 
     .slider-pages {
         flex-direction: row;
         width: 714;
-        height: 200;
     }
+
+    .indicator {
+        width:750;
+        height:50;
+        top: 150;
+        background-color: rgba(255, 0, 0, 0.3);
+        position:absolute;
+        item-color: red;
+        item-selectedColor: blue;
+        item-size: 16;
+  }
 </style>
 
 <script>

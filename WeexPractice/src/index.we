@@ -41,6 +41,11 @@
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clipboardGetString')">clipboard getString</text>
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clipboardSetString')">clipboard setString</text>
 
+        <div style="flex-direction:row;">
+            <text>muted:</text>
+            <switch checked="true"></switch>
+        </div>
+
         <text style="font-size: 20;color:rgb(0,255,0)">{{result}}</text>
 
     </scroller>
