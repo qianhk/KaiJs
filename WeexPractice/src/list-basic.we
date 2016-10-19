@@ -1,10 +1,10 @@
 <template>
     <div>
-        <list class="list" scrolldisabled={{scrollDisabled}} disabled2={{scrollDisabled}}>
+        <list class="list" scrolldisabled={{scrollDisabled}}>
             <header>
-                <text>此处是listview的header1</text>
-                <text>此处是listview的header2</text>
-                <text>此处是listview的header3</text>
+                <text onclick="onViewClick('header1')" disabled={{scrollDisabled}}>此处是listview的header1</text>
+                <text onclick="onViewClick('header2')" disabled={{scrollDisabled}}>此处是listview的header2</text>
+                <text onclick="onViewClick('header3')" disabled={{scrollDisabled}}>此处是listview的header3</text>
             </header>
             <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}" onclick="onItemClick">
                 <div class="item">
@@ -12,8 +12,9 @@
                 </div>
             </cell>
         </list>
-        <text class="count" onclick="onClickCount">Appear items:{{appearMin}} - {{appearMax}}</text>
-        <text style="height:50;color:black;" testppp={{scrollDisabled}} value={{scrollDisabled}}></text>
+        <text class="count" onclick="onClickCount">Appear items2:{{appearMin}} - {{appearMax}}</text>
+        <text style="height:50;color:black;">"disabled=" + {{scrollDisabled}}</text>
+        <text style="height:50;color:black;" value={{'disabled=' + scrollDisabled}}></text>
     </div>
 </template>
 
@@ -104,6 +105,9 @@
                 let index = e.target.attr.index;
                 require('@weex-module/modal').toast({message: 'you click list item ' + index});
             },
+            onViewClick: function(arg) {
+                require('@weex-module/modal').toast({message: arg});
+            }
         },
         created: function() {
             console.log('created config: ' + JSON.stringify(this.$getConfig()));
