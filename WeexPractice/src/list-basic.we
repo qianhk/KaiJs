@@ -15,6 +15,9 @@
         <text class="count" onclick="onClickCount">Appear items2:{{appearMin}} - {{appearMax}}</text>
         <text style="height:50;color:black;">"disabled=" + {{scrollDisabled}}</text>
         <text style="height:50;color:black;" value={{'disabled=' + scrollDisabled}}></text>
+        <div onclick="onViewClick('click in div')" disabled={{scrollDisabled}}>
+            <text style="height:50;color:black;">in div</text>
+        </div>
     </div>
 </template>
 
