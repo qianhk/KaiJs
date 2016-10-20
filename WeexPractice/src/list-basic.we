@@ -13,9 +13,10 @@
             </cell>
         </list>
         <text class="count" onclick="onClickCount">Appear items2:{{appearMin}} - {{appearMax}}</text>
-        <text style="height:50;color:black;">"disabled=" + {{scrollDisabled}}</text>
-        <text style="height:50;color:black;" value={{'disabled=' + scrollDisabled}}></text>
-        <div onclick="onViewClick('click in div')" disabled={{scrollDisabled}}>
+        <text style="height:50;color:black;">disabled= + {{scrollDisabled}}</text>
+        <div onclick="onViewClick('click in div')" disabled={{scrollDisabled}} class="btn:active">
+            <amw-wrap style="height:{{wrapTextHeight}};" title="wrap_title" text="{{wrapTextValue}}"
+             number-key=123 boolean-key=true onmeasure="onMeasureEvent"></amw-wrap>
             <text style="height:50;color:black;">in div</text>
         </div>
     </div>
@@ -49,12 +50,20 @@
         padding: 20;
     }
 
+    .btn:active{
+        background-color: #000;
+    }
+
     .item-title {}
 </style>
 
 <script>
     module.exports = {
         methods: {
+            onMeasureEvent: function(e) {
+                console.log('onMeasureEvent ' + JSON.stringify(e));
+                this.wrapTextHeight = e.height;
+            },
             onappear: function(e) {
                 var appearId = this.rows[e.target.attr.index].id;
                 nativeLog('onappear', appearId);
@@ -103,6 +112,7 @@
                 // }
                 this.scrollDisabled = !this.scrollDisabled;
                 console.log("onClickCount lookList " + this.scrollDisabled);
+                this.wrapTextValue = this.scrollDisabled ? this.wrapTextValue2 : this.wrapTextValue1;
             },
             onItemClick: function(e) {
                 let index = e.target.attr.index;
@@ -114,8 +124,13 @@
         },
         created: function() {
             console.log('created config: ' + JSON.stringify(this.$getConfig()));
+            this.wrapTextValue = this.wrapTextValue1;
         },
         data: {
+            wrapTextHeight: 0,
+            wrapTextValue1: '苹果的Mac发布会媒体邀请函终于发出来了。苹果将于10月27日在其库伯提诺总部召开新品发布会，据传将会发布新款MacBook Pro，搭载OLED触控条和采用全USB-C端口的轻薄机身设计。',
+            wrapTextValue2: '苹果的Mac发布会媒体邀请函 disabled',
+            wrapTextValue: '',
             scrollDisabled:false,
             appearMin: 1,
             appearMax: 1,
