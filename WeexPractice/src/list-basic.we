@@ -1,26 +1,42 @@
 <template>
     <div>
         <list class="list" scrolldisabled={{scrollDisabled}}>
-            <header>
-                <text onclick="onViewClick('header1')" disabled={{scrollDisabled}}>此处是listview的header1</text>
-                <text onclick="onViewClick('header2')" disabled={{scrollDisabled}}>此处是listview的header2</text>
-                <text onclick="onViewClick('header3')" disabled={{scrollDisabled}}>此处是listview的header3</text>
-            </header>
+            <!--<header>-->
+            <!--<text onclick="onViewClick('header1')" disabled={{scrollDisabled}}>此处是listview的header1</text>-->
+            <!--<text onclick="onViewClick('header2')" disabled={{scrollDisabled}}>此处是listview的header2</text>-->
+            <!--<text onclick="onViewClick('header3')" disabled={{scrollDisabled}}>此处是listview的header3</text>-->
+            <!--</header>-->
+            <cell>
+                <text> 作为普通header的cell1</text>
+                <text> 作为普通header的cell2</text>
+                <text> 作为普通header的cell3</text>
+            </cell>
             <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}" onclick="onItemClick">
                 <div class="item">
                     <text class="item-title">row {{id}}</text>
                 </div>
+            </cell>
+            <cell>
+                <text> 作为普通footer的cell1</text>
+                <text> 作为普通footer的cell2</text>
+                <text> 作为普通footer的cell3</text>
             </cell>
         </list>
         <text class="count" onclick="onClickCount">Appear items2:{{appearMin}} - {{appearMax}}</text>
         <text style="height:50;color:black;">disabled= + {{scrollDisabled}}</text>
         <div onclick="onViewClick('click in div')" disabled={{scrollDisabled}} class="btn:active">
             <amw-wrap style="height:{{wrapTextHeight}};" title="wrap_title" text="{{wrapTextValue}}"
-             number-key=123 boolean-key=true onmeasure="onMeasureEvent"></amw-wrap>
+                      number-key=123 boolean-key=true onmeasure="onMeasureEvent"></amw-wrap>
             <text style="height:50;color:black;">in div</text>
         </div>
     </div>
 </template>
+
+<list>
+    <cell> 此处header内容</cell>
+    <cell> 此处repeat item</cell>
+    <cell> 此处footer内容</cell>
+</list>
 
 <style>
     .list {
@@ -50,28 +66,29 @@
         padding: 20;
     }
 
-    .btn:active{
+    .btn:active {
         background-color: #000;
     }
 
-    .item-title {}
+    .item-title {
+    }
 </style>
 
 <script>
     module.exports = {
         methods: {
-            onMeasureEvent: function(e) {
+            onMeasureEvent: function (e) {
                 console.log('onMeasureEvent ' + JSON.stringify(e));
                 this.wrapTextHeight = e.height;
             },
-            onappear: function(e) {
+            onappear: function (e) {
                 var appearId = this.rows[e.target.attr.index].id;
                 nativeLog('onappear', appearId);
                 var appearIds = this.appearIds;
                 appearIds.push(appearId);
                 this.getMinAndMaxIds(appearIds);
             },
-            ondisappear: function(e) {
+            ondisappear: function (e) {
                 var disAppearId = this.rows[e.target.attr.index].id;
                 nativeLog('ondisappear', disAppearId);
                 var appearIds = this.appearIds;
@@ -81,30 +98,30 @@
                 }
                 this.getMinAndMaxIds(appearIds);
             },
-            getMinAndMaxIds: function(appearIds) {
-                appearIds.sort(function(a, b) {
+            getMinAndMaxIds: function (appearIds) {
+                appearIds.sort(function (a, b) {
                     return a - b;
                 });
                 this.appearIds = appearIds;
                 this.appearMax = appearIds[appearIds.length - 1];
                 this.appearMin = appearIds[0];
             },
-            onTouchStart: function(e) {
+            onTouchStart: function (e) {
                 console.log("onTouchStart " + JSON.stringify(e));
             },
-            onTouchEnd: function(e) {
+            onTouchEnd: function (e) {
                 console.log("onTouchEnd " + JSON.stringify(e));
             },
-            onTouchMove: function(e) {
+            onTouchMove: function (e) {
                 console.log("onTouchMove " + JSON.stringify(e));
             },
-            onTouchCancel: function(e) {
+            onTouchCancel: function (e) {
                 console.log("onTouchCancel " + JSON.stringify(e));
             },
-            onScroll: function(e) {
+            onScroll: function (e) {
                 console.log("onScroll " + JSON.stringify(e));
             },
-            onClickCount: function() {
+            onClickCount: function () {
                 // if ("no" == this.scrollDisabled) {
                 //     this.scrollDisabled = "yes";
                 // } else {
@@ -114,15 +131,15 @@
                 console.log("onClickCount lookList " + this.scrollDisabled);
                 this.wrapTextValue = this.scrollDisabled ? this.wrapTextValue2 : this.wrapTextValue1;
             },
-            onItemClick: function(e) {
+            onItemClick: function (e) {
                 let index = e.target.attr.index;
                 require('@weex-module/modal').toast({message: 'you click list item ' + index});
             },
-            onViewClick: function(arg) {
+            onViewClick: function (arg) {
                 require('@weex-module/modal').toast({message: arg});
             }
         },
-        created: function() {
+        created: function () {
             console.log('created config: ' + JSON.stringify(this.$getConfig()));
             this.wrapTextValue = this.wrapTextValue1;
         },
@@ -131,7 +148,7 @@
             wrapTextValue1: '苹果的Mac发布会媒体邀请函终于发出来了。苹果将于10月27日在其库伯提诺总部召开新品发布会，据传将会发布新款MacBook Pro，搭载OLED触控条和采用全USB-C端口的轻薄机身设计。',
             wrapTextValue2: '苹果的Mac发布会媒体邀请函 disabled',
             wrapTextValue: '',
-            scrollDisabled:false,
+            scrollDisabled: false,
             appearMin: 1,
             appearMax: 1,
             appearIds: [],
