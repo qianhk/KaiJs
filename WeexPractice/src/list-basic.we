@@ -1,6 +1,6 @@
 <template>
     <div>
-        <list class="list" scrolldisabled={{scrollDisabled}}>
+        <list class="list" scroll-disabled={{scrollDisabled}}>
             <!--<header>-->
             <!--<text onclick="onViewClick('header1')" disabled={{scrollDisabled}}>此处是listview的header1</text>-->
             <!--<text onclick="onViewClick('header2')" disabled={{scrollDisabled}}>此处是listview的header2</text>-->
