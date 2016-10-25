@@ -261,12 +261,11 @@
 </script>
 
 <script type="data">
-    module.exports = {
+    {
         ctHeight: -1,
         img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
-        result: '此处显示结果2 data from script type=\'data\'',
+        result: '此处显示结果1 data from script type=\'data\'',
         // id: -1,
     }
-
 
 </script>
