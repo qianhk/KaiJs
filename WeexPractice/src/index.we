@@ -1,10 +1,10 @@
 <we-element name="template-at-same-we-file">
-  <template>
-    <div>
-      <text>template-at-same-we-file define1</text>
-      <text>template-at-same-we-file define2</text>
-    </div>
-  </template>
+    <template>
+        <div>
+            <text>template-at-same-we-file define1</text>
+            <text>template-at-same-we-file define2</text>
+        </div>
+    </template>
 </we-element>
 
 <template>
@@ -47,7 +47,8 @@
         </div>
 
         <text style="font-size: 20;color:rgb(0,255,0)" ontouchstart="onTouchStart" ontouchend="onTouchEnd"
-            ontouchcancel="onTouchCancel" ontouchmove="onTouchMove">{{result}}</text>
+              ontouchcancel="onTouchCancel" ontouchmove="onTouchMove">{{result}}
+        </text>
 
     </scroller>
 </template>
@@ -77,13 +78,15 @@
     //broadcast 可以同级用， 可以往下级we用， 不能往上级用;
     //emit 貌似不能跨文件调用到events里的function;
     module.exports = {
-        data: {
-            ctHeight: -1,
-            img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
-            result: '此处显示结果',
+        data: function () {
+            return {
+                ctHeight: -1,
+                img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
+                result: '此处显示结果0',
+            }
         },
         methods: {
-            onClick: function(id) {
+            onClick: function (id) {
                 console.log('onclick id=' + id);
                 if (id == 'returnWeex2') {
                     let weexTitle2 = this.$el('id_weex2');
@@ -105,7 +108,7 @@
                     this.$emit('customType1', 'haha ' + id);
 
                     var storage = require('@weex-module/storage');
-                    storage.setItem('bar', 'bar-value', function(e) {
+                    storage.setItem('bar', 'bar-value', function (e) {
                         // 'e'是一个包含'result'和'data'的对象. e.result判断'setItem'操作是否执行成功.
                         // e.data返回'undefined'表示设置成功，返回'invalid_param'表示key/value为""/null
                         console.log('storage.setItem， e:' + JSON.stringify(e));
@@ -121,7 +124,7 @@
                     // this.result = 'use common utils: minus(3,5)=' + utils.minus(3, 5);
 
                     var storage = require('@weex-module/storage');
-                    storage.getItem('bar', function(e) {
+                    storage.getItem('bar', function (e) {
                         // 'e'是一个包含'result'和'data'的对象.
                         // 使用'e.data'获取键的值，如果没有找到对应的键值则返回'undefined'.
                         console.log('storage.getItem e:' + JSON.stringify(e));
@@ -132,7 +135,7 @@
                     utils.toast("this is toast from other file");
 
                     var storage = require('@weex-module/storage');
-                    storage.getAllKeys(function(e) {
+                    storage.getAllKeys(function (e) {
                         // 'e'是一个包含'result'和'data'的对象.
                         // e.data返回键名组成的数组.
                         console.log('storage.getAllKeys e:' + JSON.stringify(e));
@@ -149,7 +152,7 @@
                     modal.alert({
                         message: arg1,
                         okTitle: arg2
-                    }, function(e) {
+                    }, function (e) {
                         console.log('you choose action e:' + e);
                     })
                 } else if (id == 'confirm') {
@@ -161,7 +164,7 @@
                         message: arg1,
                         okTitle: arg2,
                         cancelTitle: arg3
-                    }, function(e) {
+                    }, function (e) {
                         console.log('you choose action e:' + e);
                     });
                 } else if (id == 'prompt') {
@@ -173,7 +176,7 @@
                         message: arg1,
                         okTitle: arg2,
                         cancelTitle: arg3
-                    }, function(e) {
+                    }, function (e) {
                         console.log('you choose action e:' + JSON.stringify(e));
                     });
                 } else if (id == 'jumpOther') {
@@ -182,7 +185,7 @@
                         'animated': 'true',
                     }
                     var navigator = require('@weex-module/navigator');
-                    navigator.push(params, function(e) {
+                    navigator.push(params, function (e) {
                         console.log('navigator.push, e:' + JSON.stringify(e));
                     });
                 } else if (id == 'setInterval') {
@@ -191,66 +194,66 @@
                     clearInterval(timer);
                 } else if (id == 'clipboardGetString') {
                     var clipboard = require('@weex-module/clipboard');
-                    clipboard.getString(function(ret) {
-                      // callback. 'ret' is an object that contains 'result' and 'data'.
-                      // use 'ret.data' to fetch the value.
-                      console.log("read from clipboard is " + JSON.stringify(ret));
-                      require('@weex-module/modal').toast({message:'result=' + require('./common/utils').simpleStringify(ret.data)});
+                    clipboard.getString(function (ret) {
+                        // callback. 'ret' is an object that contains 'result' and 'data'.
+                        // use 'ret.data' to fetch the value.
+                        console.log("read from clipboard is " + JSON.stringify(ret));
+                        require('@weex-module/modal').toast({message: 'result=' + require('./common/utils').simpleStringify(ret.data)});
                     });
                 } else if (id == 'clipboardSetString') {
                     var clipboard = require('@weex-module/clipboard');
                     clipboard.setString("string from kai weex test app.");
                 }
             },
-            onTouchStart: function(e) {
+            onTouchStart: function (e) {
                 console.log("ononTouchStart " + JSON.stringify(e));
             },
-            onTouchEnd: function(e) {
+            onTouchEnd: function (e) {
                 console.log("ononTouchEnd " + JSON.stringify(e));
             },
-            onTouchMove: function(e) {
+            onTouchMove: function (e) {
                 console.log("ononTouchMove " + JSON.stringify(e));
             },
-            onTouchCancel: function(e) {
+            onTouchCancel: function (e) {
                 console.log("ononTouchCancel " + JSON.stringify(e));
             },
-            foo: function(fn) {
+            foo: function (fn) {
                 return fn();
             },
-            bar: function() {
+            bar: function () {
                 console.log('from bar() this is : ' + require('./common/utils').simpleStringify(this));
                 return this.result;
             },
-            startTimer: function() {
+            startTimer: function () {
                 ++times;
                 console.log('startTimer times=' + times);
             },
         },
-        init: function() {
+        init: function () {
             console.log('ViewModel constructor begins')
         },
-        created: function() {
+        created: function () {
             console.log('Data observation finished')
         },
-        ready: function() {
+        ready: function () {
             console.log('Virtual DOM finished, id=' + this.id + ' config is: ' + JSON.stringify(this.$getConfig()));
             this.ctHeight = this.$getConfig().env.deviceHeight;
-            this.$on('notifyFromChild', function(e) {
+            this.$on('notifyFromChild', function (e) {
                 console.log('notify from child, e.detail = ' + e.detail);
             });
             console.log('direct log bar() result:' + this.bar());
             console.log('log bar() by foo() result:' + this.foo(this.bar.bind(this)));
             var vm = this;
-            vm.$on('tabBar.onClick',function(e){
-              var detail= e.detail;
-              nativeLog('tabBar.onClick ' + detail.index);
+            vm.$on('tabBar.onClick', function (e) {
+                var detail = e.detail;
+                nativeLog('tabBar.onClick ' + detail.index);
             });
         },
         events: {
-            customType1: function(e) {
+            customType1: function (e) {
                 console.log('customType1: ' + JSON.stringify(e));
             },
-            customType2: function(e) {
+            customType2: function (e) {
                 console.log('customType2: ' + JSON.stringify(e));
             },
         },
@@ -261,7 +264,9 @@
     module.exports = {
         ctHeight: -1,
         img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
-        result: '此处显示结果 data from script type=\'data\'',
+        result: '此处显示结果2 data from script type=\'data\'',
         // id: -1,
     }
+
+
 </script>
