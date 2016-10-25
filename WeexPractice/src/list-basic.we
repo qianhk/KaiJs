@@ -1,13 +1,13 @@
 <template>
     <div>
-        <list class="list" scroll-disabled={{scrollDisabled}}>
-            <!--<header>-->
-            <!--<text onclick="onViewClick('header1')" disabled={{scrollDisabled}}>此处是listview的header1</text>-->
-            <!--<text onclick="onViewClick('header2')" disabled={{scrollDisabled}}>此处是listview的header2</text>-->
-            <!--<text onclick="onViewClick('header3')" disabled={{scrollDisabled}}>此处是listview的header3</text>-->
-            <!--</header>-->
+        <list class="list" amw-scroll-disabled={{scrollDisabled}}>
+            <header>
+            <text onclick="onViewClick('header1')" amw-disabled={{scrollDisabled}}>此处是listview的header1</text>
+            <text onclick="onViewClick('header2')" amw-disabled={{scrollDisabled}}>此处是listview的header2</text>
+            <text onclick="onViewClick('header3')" amw-disabled={{scrollDisabled}}>此处是listview的header3</text>
+            </header>
             <cell>
-                <text> 作为普通header的cell1</text>
+                <text> 作为普通header的cell11</text>
                 <text> 作为普通header的cell2</text>
                 <text> 作为普通header的cell3</text>
             </cell>
@@ -24,19 +24,13 @@
         </list>
         <text class="count" onclick="onClickCount">Appear items2:{{appearMin}} - {{appearMax}}</text>
         <text style="height:50;color:black;">disabled= + {{scrollDisabled}}</text>
-        <div onclick="onViewClick('click in div')" disabled={{scrollDisabled}} class="btn:active">
+        <div onclick="onViewClick('click in div')" amw-disabled={{scrollDisabled}} class="btn:active">
             <amw-wrap style="height:{{wrapTextHeight}};" title="wrap_title" text="{{wrapTextValue}}"
                       number-key=123 boolean-key=true onmeasure="onMeasureEvent"></amw-wrap>
             <text style="height:50;color:black;">in div</text>
         </div>
     </div>
 </template>
-
-<list>
-    <cell> 此处header内容</cell>
-    <cell> 此处repeat item</cell>
-    <cell> 此处footer内容</cell>
-</list>
 
 <style>
     .list {
