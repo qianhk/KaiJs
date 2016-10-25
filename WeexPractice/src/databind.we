@@ -1,0 +1,33 @@
+<template>
+    <div>
+        <text>A: {{ A.message }}</text>
+        <text>B: {{ B.message }}</text>
+        <text>C: {{ C.message }}</text>
+        <text>D: {{ D.message }}</text>
+    </div>
+</template>
+
+<script>
+    module.exports = {
+        data: function () {
+            return {
+                A: {},
+                B: {},
+                C: {message: 'initial'},
+                D: {message: 'initial'}
+            }
+        },
+
+        created: function () {
+            this.B.message = 'created'
+            this.C.message = 'created'
+        },
+
+        ready: function () {
+            this.A.message = 'ready'
+            this.B.message = 'ready'
+            this.C.message = 'ready'
+        }
+    }
+
+</script>
