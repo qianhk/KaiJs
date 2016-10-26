@@ -1,5 +1,5 @@
 <template>
-    <scroller class="ct">
+    <scroller class="ct" onamwscroll="onAmwScroll">
         <refresh class="refresh" onRefresh="handleRefresh" display="{{displayRefresh}}">
             <loading-indicator style="height:60;width:60;color:rgb(238, 162, 54)"></loading-indicator>
             <text style="margin-left:36;" class="font12 color-c2a50">下拉刷新2....</text>
@@ -97,6 +97,9 @@
                 setTimeout(() => {
                     that.displayRefresh = 'hide'
                 }, 2000);
+            },
+            onAmwScroll: function (e) {
+                console.log("onAmwScroll " + JSON.stringify(e));
             },
         },
         data: {

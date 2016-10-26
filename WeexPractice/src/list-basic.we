@@ -1,6 +1,6 @@
 <template>
     <div>
-        <list class="list" amw-scroll-disabled={{scrollDisabled}}>
+        <list class="list" amw-scroll-disabled={{scrollDisabled}} onamwscroll="onAmwScroll">
             <header>
             <text onclick="onViewClick('header1')" amw-disabled={{scrollDisabled}}>此处是listview的header1</text>
             <text onclick="onViewClick('header2')" amw-disabled={{scrollDisabled}}>此处是listview的header2</text>
@@ -112,8 +112,8 @@
             onTouchCancel: function (e) {
                 console.log("onTouchCancel " + JSON.stringify(e));
             },
-            onScroll: function (e) {
-                console.log("onScroll " + JSON.stringify(e));
+            onAmwScroll: function (e) {
+                console.log("onAmwScroll " + JSON.stringify(e));
             },
             onClickCount: function () {
                 // if ("no" == this.scrollDisabled) {

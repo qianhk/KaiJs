@@ -1,6 +1,6 @@
 <template>
     <div>
-        <list class="list">
+        <list class="list" onamwscroll="onAmwScroll">
             <refresh class="refresh" onrefresh="handleRefresh" display="{{displayRefresh}}">
                 <loading-indicator style="height:60;width:60;color:goldenrod;"></loading-indicator>
                 <text style="margin-top:10;color:goldenrod;font-size:28;">下拉刷新</text>
@@ -66,6 +66,9 @@
                 setTimeout(() => {
                     that.displayRefresh = 'hide';
                 }, 1000);
+            },
+            onAmwScroll: function (e) {
+                console.log("onAmwScroll " + e.offsetY);
             },
         },
         created: function () {
