@@ -1,0 +1,48 @@
+<template>
+    <div style="background-color: transparent">
+        <div style="flex-direction: row; justify-content: space-between;">
+            <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('LOADING')">LOADING</text>
+            <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('NO_DATA')">NO_DATA</text>
+            <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('FAILED')">FAILED</text>
+            <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('SUCCESS')">SUCCESS</text>
+        </div>
+        <amw-state-view state="{{state}}" onretry="onRetry" style="flex: 1; background-color: gray; margin-top: 10;">
+            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='SUCCESS'>
+                <text>success view</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='NO_DATA'>
+                <text>no data view</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='FAILED'>
+                <text>failed view</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='LOADING'>
+                <text>loading view</text>
+            </div>
+        </amw-state-view>
+    </div>
+</template>
+
+<script>
+    module.exports = {
+        methods: {
+            onRetry: function () {
+                console.log('onRetry normal')
+            },
+            onChangeState: function (state) {
+                this.state = state;
+            }
+        },
+        created: function () {
+            console.log('created config: ' + JSON.stringify(this.$getConfig()));
+        },
+        data: function () {
+            return {
+                state: 'LOADING',
+            }
+        }
+    }
+</script>
+
+<style>
+</style>
