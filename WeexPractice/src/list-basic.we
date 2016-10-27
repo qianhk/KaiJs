@@ -29,6 +29,9 @@
                       number-key=123 boolean-key=true onmeasure="onMeasureEvent"></amw-wrap>
             <text style="height:50;color:black;">in div</text>
         </div>
+        <text onclick="onDeleteItemClick">删除一项</text>
+        <text onclick="onAppendItemClick">末尾增加一项</text>
+        <text onclick="onAddItemClick">中间增加一项</text>
     </div>
 </template>
 
@@ -131,7 +134,16 @@
             },
             onViewClick: function (arg) {
                 require('@weex-module/modal').toast({message: arg});
-            }
+            },
+            onDeleteItemClick: function () {
+                this.rows.shift();
+            },
+            onAppendItemClick: function () {
+                this.rows.push({id:300});
+            },
+            onAddItemClick: function () {
+                this.rows.unshift({id:400});
+            },
         },
         created: function () {
             console.log('created config: ' + JSON.stringify(this.$getConfig()));
