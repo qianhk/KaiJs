@@ -6,18 +6,18 @@
             <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('FAILED')">FAILED</text>
             <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('SUCCESS')">SUCCESS</text>
         </div>
-        <amw-state-view state="{{state}}" onretry="onRetry" style="flex: 1; background-color: gray; margin-top: 10;">
-            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='SUCCESS'>
-                <text>success view</text>
-            </div>
-            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='NO_DATA'>
-                <text>no data view</text>
-            </div>
-            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='FAILED'>
-                <text>failed view</text>
-            </div>
-            <div style="align-items: center; justify-content: center; flex: 1;" amw-state='LOADING'>
+        <amw-state-view state="{{state}}" onretry="onRetry" style="flex: 1; background-color: gold; margin-top: 10;">
+            <div style="align-items: center; justify-content: center; flex: 1; position: absolute; background-color: dodgerblue; width: 750; height: 200;" amw-state='LOADING'>
                 <text>loading view</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1; position: absolute; background-color: goldenrod; width: 750; height: 200;" amw-state='NO_DATA'>
+                <text>no data view2</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1; position: absolute; background-color: aquamarine; width: 750; height: 200;" amw-state='FAILED'>
+                <text>failed view1</text>
+            </div>
+            <div style="align-items: center; justify-content: center; flex: 1; position: absolute; background-color: darkkhaki; width: 750; height: 200;">
+                <text>success view</text>
             </div>
         </amw-state-view>
     </div>

@@ -1,19 +1,21 @@
 <template>
-    <div>
+    <div style="background-color: palegoldenrod;">
         <list class="list" amw-scroll-disabled={{scrollDisabled}} onamwscroll="onAmwScroll">
             <header>
             <text onclick="onViewClick('header1')" amw-disabled={{scrollDisabled}}>此处是listview的header1</text>
             <text onclick="onViewClick('header2')" amw-disabled={{scrollDisabled}}>此处是listview的header2</text>
             <text onclick="onViewClick('header3')" amw-disabled={{scrollDisabled}}>此处是listview的header3</text>
             </header>
-            <cell>
+            <cell style="align-items: center;">
                 <text> 作为普通header的cell11</text>
                 <text> 作为普通header的cell2</text>
                 <text> 作为普通header的cell3</text>
+                <image style="width: 300; height: 225; background-color: rgba(0, 0, 0, 0.1);" src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
             </cell>
             <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}" onclick="onItemClick">
                 <div class="item">
-                    <text class="item-title">row {{id}}</text>
+                    <image if="imgUrl" style="width: 100; height: 100; background-color: rgba(0, 0, 0, 0.1);" src="{{imgUrl}}"></image>
+                    <text  style="margin-left: 10;" class="item-title">row {{id}} {{txt ? txt : ''}}</text>
                 </div>
             </cell>
             <cell>
@@ -56,10 +58,11 @@
     }
 
     .item {
-        justify-content: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
         border-bottom-width: 2;
         border-bottom-color: #c0c0c0;
-        height: 100;
         padding: 20;
     }
 
@@ -159,21 +162,31 @@
             appearMax: 1,
             appearIds: [],
             rows: [{
-                id: 1
+                id: 1,
+                imgUrl: "http://img.weixinyidu.com/150901/4a74dca5.jpg"
             }, {
-                id: 2
+                id: 2,
+                imgUrl: "http://g.hiphotos.baidu.com/image/pic/item/f2deb48f8c5494eefe46be042ff5e0fe99257e42.jpg"
             }, {
-                id: 3
+                id: 3,
+                imgUrl: "http://a.hiphotos.baidu.com/image/pic/item/8326cffc1e178a82914792a4f403738da977e8bf.jpg"
             }, {
-                id: 4
+                id: 4,
+                imgUrl: "http://am.zdmimg.com/201609/16/57dbf617cbaf2.jpg_e600.jpg"
             }, {
-                id: 5
+                id: 5,
+                imgUrl: "http://am.zdmimg.com/201610/07/57f7c2ab52f0b.jpg_e600.jpg"
             }, {
-                id: 6
+                id: 6,
+                imgUrl: "http://img.taopic.com/uploads/allimg/140326/235113-1403260I33562.jpg"
             }, {
-                id: 7
+                id: 7,
+                txt: 'gif',
+                imgUrl: "http://pictures.picasion.com/pic33/9a9ff6d1dab4e186117aa85095052dd5.gif"
             }, {
-                id: 8
+                id: 8,
+                txt: 'gif',
+                imgUrl: "http://img0.178.com/acg1/201506/227753817857/227754343373.gif"
             }, {
                 id: 9
             }, {
