@@ -11,7 +11,7 @@
                 <text> 作为普通header的cell2</text>
                 <text> 作为普通header的cell3</text>
                 <div style="flex-direction: row">
-                    <image style="width: 300; height: 225; background-color: rgba(0, 0, 0, 0.1);" src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                    <image style="width: 300; height: 225; background-color: rgba(0, 0, 0, 0.1);" src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif?id=1&name=hao"></image>
                     <image style="width: 100; height: 225; background-color: rgba(0, 0, 0, 0.1); margin-left: 10;"
                            src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
                     <div>
