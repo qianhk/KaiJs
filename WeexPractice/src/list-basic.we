@@ -2,20 +2,30 @@
     <div style="background-color: palegoldenrod;">
         <list class="list" amw-scroll-disabled={{scrollDisabled}} onamwscroll="onAmwScroll">
             <header>
-            <text onclick="onViewClick('header1')" amw-disabled={{scrollDisabled}}>此处是listview的header1</text>
-            <text onclick="onViewClick('header2')" amw-disabled={{scrollDisabled}}>此处是listview的header2</text>
-            <text onclick="onViewClick('header3')" amw-disabled={{scrollDisabled}}>此处是listview的header3</text>
+                <text onclick="onViewClick('header1')" amw-disabled={{scrollDisabled}}>此处是listview的header1</text>
+                <text onclick="onViewClick('header2')" amw-disabled={{scrollDisabled}}>此处是listview的header2</text>
+                <text onclick="onViewClick('header3')" amw-disabled={{scrollDisabled}}>此处是listview的header3</text>
             </header>
-            <cell style="align-items: center;">
+            <cell style="align-items: flex-start;">
                 <text> 作为普通header的cell11</text>
                 <text> 作为普通header的cell2</text>
                 <text> 作为普通header的cell3</text>
-                <image style="width: 300; height: 225; background-color: rgba(0, 0, 0, 0.1);" src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                <div style="flex-direction: row">
+                    <image style="width: 300; height: 225; background-color: rgba(0, 0, 0, 0.1);" src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                    <image style="width: 100; height: 225; background-color: rgba(0, 0, 0, 0.1); margin-left: 10;"
+                           src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                    <div>
+                        <image style="width: 240; height: 100; background-color: rgba(0, 0, 0, 0.1); margin-left: 10;"
+                               src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                        <image style="width: 240; height: 100; background-color: rgba(0, 0, 0, 0.1); margin-left: 10; margin-top: 20; resize: cover;"
+                               src="http://pic.pc6.com/up/2011-11/20111111331405192374.gif"></image>
+                    </div>
+                </div>
             </cell>
             <cell onappear="onappear" ondisappear="ondisappear" class="row" repeat="{{rows}}" index="{{$index}}" onclick="onItemClick">
                 <div class="item">
                     <image if="imgUrl" style="width: 100; height: 100; background-color: rgba(0, 0, 0, 0.1);" src="{{imgUrl}}"></image>
-                    <text  style="margin-left: 10;" class="item-title">row {{id}} {{txt ? txt : ''}}</text>
+                    <text style="margin-left: 10;" class="item-title">row {{id}} {{txt ? txt : ''}}</text>
                 </div>
             </cell>
             <cell>
@@ -142,10 +152,10 @@
                 this.rows.shift();
             },
             onAppendItemClick: function () {
-                this.rows.push({id:300});
+                this.rows.push({id: 300});
             },
             onAddItemClick: function () {
-                this.rows.unshift({id:400});
+                this.rows.unshift({id: 400});
             },
         },
         created: function () {
