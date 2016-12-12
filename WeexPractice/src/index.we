@@ -39,7 +39,7 @@
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clearInterval')">timer clearInterval</text>
 
         <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clipboardGetString')">clipboard getString</text>
-        <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('clipboardSetString')">clipboard setString</text>
+        <text style="font-size: 28;color:rgb(255,0,0)" id="clipboardSetString" onclick="onClick('clipboardSetString')">clipboard setString</text>
 
         <div style="flex-direction:row;">
             <text>muted:</text>
@@ -70,7 +70,7 @@
 </style>
 
 <script>
-    var dom = require('@weex-module/dom');
+    const dom = require('@weex-module/dom');
     var timer;
     var times = 0;
     //根节点官方要求只能是container、list、scroller之一, 但实际用div也行;
@@ -203,6 +203,13 @@
                 } else if (id == 'clipboardSetString') {
                     var clipboard = require('@weex-module/clipboard');
                     clipboard.setString("string from kai weex test app.");
+
+//                    var elem = this.$el('clipboardSetString');
+//                    dom.getComponentRect(elem, function(info) {
+//                        // got the component layout information
+//                        console.log('look getComponentRect' + JSON.stringify(info));
+//                    })
+
                 }
             },
             onTouchStart: function (e) {
