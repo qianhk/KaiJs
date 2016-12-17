@@ -49,9 +49,9 @@ window.utils.colorToRGB = function (color, alpha) {
         a = (alpha < 0) ? 0 : ((alpha > 1) ? 1 : alpha);
     //only use 'rgba' if needed
     if (a === 1) {
-        return "rgb("+ r +","+ g +","+ b +")";
+        return "rgb(" + r + "," + g + "," + b + ")";
     } else {
-        return "rgba("+ r +","+ g +","+ b +","+ a +")";
+        return "rgba(" + r + "," + g + "," + b + "," + a + ")";
     }
 };
 
@@ -80,4 +80,15 @@ window.utils.intersects = function (rectA, rectB) {
     rectB.x + rectB.width < rectA.x ||
     rectA.y + rectA.height < rectB.y ||
     rectB.y + rectB.height < rectA.y);
+};
+
+//椭圆 贝塞尔控制点x=(椭圆宽度/0.75)/2
+CanvasRenderingContext2D.prototype.oval = function (x, y, width, height) {
+    var k = (width / 0.75) / 2,
+        w = width / 2,
+        h = height / 2;
+    this.moveTo(x, y - h);
+    this.bezierCurveTo(x + k, y - h, x + k, y + h, x, y + h);
+    this.bezierCurveTo(x - k, y + h, x - k, y - h, x, y - h);
+    return this;
 };

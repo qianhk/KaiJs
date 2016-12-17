@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>匀速圆周运动测试</title>
+    <title>匀速绕椭圆运动测试</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,14 +11,15 @@
 <script src="ball.js"></script>
 <script>
     window.onload = function () {
-        let duration = 3.0;
+        let duration = 12.0;
         var canvas = document.getElementById('canvas'),
                 context = canvas.getContext('2d'),
                 ball = new Ball(5),
                 angle = 0,
                 centerX = canvas.width / 2,
                 centerY = canvas.height / 2,
-                radius = 100,
+                radiusX = 150,
+                radiusY = 50,
                 speed = 2 * Math.PI / duration / 60;
 
 
@@ -27,8 +28,8 @@
             window.requestAnimationFrame(drawFrame, canvas);
             context.clearRect(0, 0, canvas.width, canvas.height);
             drawBkgCircle();
-            ball.x = centerX + Math.sin(angle) * radius;
-            ball.y = centerY + Math.cos(angle) * radius;
+            ball.x = centerX + Math.sin(angle) * radiusX;
+            ball.y = centerY + Math.cos(angle) * radiusY;
             angle += speed;
             ball.draw(context);
         }());
@@ -36,10 +37,12 @@
         function drawBkgCircle() {
             context.save();
             context.lineWidth = 1;
-            context.strokeStyle = '#DDBBCC';
 //            context.translate(centerX, centerY);
             context.beginPath();
-            context.arc(centerX, centerY, radius, 0, (Math.PI * 2), true);
+            context.strokeStyle = '#DDCCBB';
+            context.arc(centerX, centerY, radiusX, 0, (Math.PI * 2), true);
+            context.strokeStyle = '#BBCCDD';
+            context.oval(centerX, centerY, 2 * radiusX, 2 * radiusY);
             context.closePath();
             context.stroke();
             context.restore();
