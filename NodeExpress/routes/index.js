@@ -2,6 +2,17 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
+
+router.use(function (req, res, next) {
+    if (req.query.method == 'error') {
+        console.log('There is a requesting at index.js, method is error');
+        res.end('return error because method is error');
+    } else {
+        console.log('There is a requesting at index.js');
+        next();
+    }
+});
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'ExpressTitle'});
