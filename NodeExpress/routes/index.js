@@ -13,4 +13,8 @@ router.get('/listUsers', function (req, res) {
     });
 });
 
+router.post('/test', function (req, res) {
+    res.end('you use post method');
+})
+
 module.exports = router;
