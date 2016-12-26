@@ -90,6 +90,10 @@
         }
     })
 
+    app6.$watch('message', function (newVal, oldVal) {
+        console.log('lookMessage newVal=' + newVal + " oldVal=" + oldVal);
+    })
+
 </script>
 </body>
 </html>
