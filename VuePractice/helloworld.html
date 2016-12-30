@@ -87,7 +87,31 @@
         el: '#app-6',
         data: {
             message: 'Hello Vue!'
-        }
+        },
+        beforeCreate: function () {
+            console.log('look lifecycle: beforeCreate')
+        },
+        created: function () {
+            console.log('look lifecycle: created')
+        },
+        beforeMount: function () {
+            console.log('look lifecycle: beforeMount')
+        },
+        mounted: function () {
+            console.log('look lifecycle: mounted')
+        },
+        beforeUpdate: function () {
+            console.log('look lifecycle: beforeUpdate')
+        },
+        updated: function () {
+            console.log('look lifecycle: updated')
+        },
+        beforeDestroy: function () {
+            console.log('look lifecycle: beforeDestroy')
+        },
+        destroyed: function () {
+            console.log('look lifecycle: destroyed'); // not see
+        },
     })
 
     app6.$watch('message', function (newVal, oldVal) {
