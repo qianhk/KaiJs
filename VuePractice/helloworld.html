@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="app">
-    {{message}}
+    {{message}} + 'seen=' + {{seen}}
 </div>
 
 <div id="app-2">
@@ -17,8 +17,10 @@
 </div>
 
 <div id="app-3">
-    <p v-if="seen" v-bind:style="[styleObject, styleObject2]">Now you see me</p>
-    <p v-bind:style="[styleObject, styleObject2, {color: 'blue'}]">Now you see me2</p>
+    <p v-if="seen" v-bind:style="[styleObject, styleObject2]">Now you see me (seen、style)</p>
+    <p :style="[styleObject, styleObject2, {color: 'blue'}]" class="classB">Now you see me2 (style)</p>
+    <p :class="[{classB: seen}, classAtData]">Now you see me3 (classAtData)</p>
+    <p :class="[{classB: seen}, classAtComputed]">Now you see me4 (classAtComputed)</p>
 </div>
 
 <div id="app-4">
@@ -31,7 +33,7 @@
 
 <div id="app-5">
     <p>{{ message }}</p>
-    <button v-on:click="reverseMessage">Reverse Message</button>
+    <button v-on:click="reverseMessage">Reverse Message and app3's seen variable (bool)</button>
 </div>
 
 <div id="app-6">
@@ -49,7 +51,8 @@
     var app = new Vue({
         el: '#app',
         data: {
-            message: 'Hello Vue!'
+            message: 'Hello Vue!',
+            seen: true
         }
     });
 
@@ -63,7 +66,7 @@
     var app3 = new Vue({
         el: '#app-3',
         data: {
-            seen: true,
+            seen: app.seen,
             styleObject: {
                 color: 'red',
                 fontSize: '16px'
@@ -71,8 +74,20 @@
             styleObject2: {
                 color: 'green',
                 fontSize: '16px'
-            }
+            },
+            classAtData: {
+                classA: this.seen, // 不止为何没起作用， 也许此时seen还没生效，值为false，
+                // 用app.seen也不行，起作用，但不会绑定，需要动态绑定还是用computed或者写在布局模板中
+
+            },
         },
+        computed: {
+            classAtComputed: function () {
+                return {
+                    classA: this.seen
+                }
+            }
+        }
     })
 
     var app4 = new Vue({
@@ -94,6 +109,8 @@
         methods: {
             reverseMessage: function () {
                 this.message = this.message.split('').reverse().join('')
+                app3.seen = !app3.seen;
+                app.seen = app3.seen;
             }
         }
     })
@@ -150,5 +167,20 @@
     })
 
 </script>
+
+<style type="text/css">
+
+    .classA {
+        width: 200px;
+        height: 30px;
+        border: 1px solid #ccc;
+    }
+
+    .classB {
+        background: yellow;
+    }
+
+</style>
+
 </body>
 </html>
