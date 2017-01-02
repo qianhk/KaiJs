@@ -17,7 +17,8 @@
 </div>
 
 <div id="app-3">
-    <p v-if="seen">Now you see me</p>
+    <p v-if="seen" v-bind:style="[styleObject, styleObject2]">Now you see me</p>
+    <p v-bind:style="[styleObject, styleObject2, {color: 'blue'}]">Now you see me2</p>
 </div>
 
 <div id="app-4">
@@ -62,8 +63,16 @@
     var app3 = new Vue({
         el: '#app-3',
         data: {
-            seen: true
-        }
+            seen: true,
+            styleObject: {
+                color: 'red',
+                fontSize: '16px'
+            },
+            styleObject2: {
+                color: 'green',
+                fontSize: '16px'
+            }
+        },
     })
 
     var app4 = new Vue({
