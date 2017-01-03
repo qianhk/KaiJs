@@ -39,11 +39,11 @@
 </div>
 
 <div id="app-4">
-    <ol>
-        <li v-for="todo in todos">
-            {{ todo.text }}
+    <ul>
+        <li v-for="(todo, index) in todos">
+            {{index}}: &nbsp;{{ todo.text }}
         </li>
-    </ol>
+    </ul>
 </div>
 
 <div id="app-5">
@@ -73,7 +73,18 @@
         <input placeholder="Enter your email address" key="input_email" v-model="email">
     </template>
     <button @click="onToggleLoginType">Toggle login type</button>
+
+    <br>
+    <span v-for="(n, index) in 10">{{index}}: {{n}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+    <ol>
+        <li v-for="(value, key) in object">
+            {{key}}: &nbsp;{{ value }}
+        </li>
+    </ol>
+
 </div>
+
 
 <script>
     var app = new Vue({
@@ -199,7 +210,12 @@
         data: {
             loginType: 'username',
             userName: '',
-            email: ''
+            email: '',
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
         },
         methods: {
             onToggleLoginType: function () {
