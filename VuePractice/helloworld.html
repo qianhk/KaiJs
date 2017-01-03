@@ -8,6 +8,20 @@
 <body>
 <div id="app">
     {{message}} + 'seen=' + {{seen}}
+
+    <template v-if="seen">
+        <h5>Title Seen (True)</h5>
+        <p>Paragraph true</p>
+    </template>
+
+    <template v-else>
+        <h5>Title Seen (Else)</h5>
+        <p>Paragraph else</p>
+    </template>
+
+    <!--v-show 的元素会始终渲染并保持在 DOM 中。v-show 是简单的切换元素的 CSS 属性 display v-show 不支持 <template> 语法-->
+    <h5 v-show="seen">v-show Hello!</h5>
+
 </div>
 
 <div id="app-2">
@@ -18,6 +32,7 @@
 
 <div id="app-3">
     <p v-if="seen" v-bind:style="[styleObject, styleObject2]">Now you see me (seen、style)</p>
+    <p v-else v-bind:style="[styleObject, styleObject2]">Now you see me (seen Else、style)</p>
     <p :style="[styleObject, styleObject2, {color: 'blue'}]" class="classB">Now you see me2 (style)</p>
     <p :class="[{classB: seen}, classAtData]">Now you see me3 (classAtData)</p>
     <p :class="[{classB: seen}, classAtComputed]">Now you see me4 (classAtComputed)</p>
@@ -45,6 +60,19 @@
 <div v-html="<p>rawHtml2</p>"></div>
 <div>
     <p>after raw html</p>
+</div>
+
+<div id="app-7">
+    <template v-if="loginType === 'username'">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="input_username" v-model="userName">
+    </template>
+    <template v-else>
+        <!--label input 顺序颠倒下搞的不一样也不能复用了-->
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="input_email" v-model="email">
+    </template>
+    <button @click="onToggleLoginType">Toggle login type</button>
 </div>
 
 <script>
@@ -166,6 +194,23 @@
         console.log('lookMessage newVal=' + newVal + " oldVal=" + oldVal);
     })
 
+    var app7 = new Vue({
+        el: '#app-7',
+        data: {
+            loginType: 'username',
+            userName: '',
+            email: ''
+        },
+        methods: {
+            onToggleLoginType: function () {
+                if (this.loginType == 'username') {
+                    this.loginType = 'email';
+                } else {
+                    this.loginType = 'username';
+                }
+            }
+        }
+    });
 </script>
 
 <style type="text/css">
