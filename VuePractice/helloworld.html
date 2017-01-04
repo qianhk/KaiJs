@@ -74,7 +74,10 @@
     </template>
     <button @click="onToggleLoginType">Toggle login type</button>
 
-    <br>
+    <br />
+    <input placeholder="press keybord enter" @keyup.enter="onPressKeyboard" v-on:keyup.tab.delete="onPressKeyboard2">
+    <br/>
+
     <span v-for="(n, index) in 10">{{index}}: {{n}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
     <ol>
@@ -169,6 +172,7 @@
                 this.message = this.message.split('').reverse().join('')
                 app3.seen = !app3.seen;
                 app.seen = app3.seen;
+                Vue.set(app4.todos, 0, {text: 'change by Vue.set(...)'})
             }
         }
     })
@@ -243,7 +247,13 @@
                 } else {
                     this.loginType = 'username';
                 }
-            }
+            },
+            onPressKeyboard: function (arg) {
+                console.log('lookMessage onPress keyboard, arg=' + JSON.stringify(arg));
+            },
+            onPressKeyboard2: function () {
+                console.log('lookMessage onPress keyboard2');
+            },
         }
     });
 </script>
