@@ -85,7 +85,6 @@
             {{key}}: &nbsp;{{ value }}
         </li>
     </ol>
-
 </div>
 
 <div id="app-8">
@@ -108,6 +107,34 @@
     <label for="two">Two</label>
     <br>
     <span>Picked: {{ picked }}</span>
+
+    <br><br>
+
+    <select v-model="selected">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+
+    <br><br>
+    <select v-model="selecteds" multiple>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <br>
+    <span>Selected: {{ selecteds }}</span>
+
+
+    <br><br>
+    <select v-model="selected">
+        <option v-for="option in options" :value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+
 
 </div>
 
@@ -260,7 +287,7 @@
                 firstName: 'John',
                 lastName: 'Doe',
                 age: 30
-            }
+            },
         },
         methods: {
             onToggleLoginType: function () {
@@ -284,6 +311,13 @@
         data: {
             checkedNames: [],
             picked: '',
+            selected: 'B',
+            selecteds: ['B', 'C'],
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ],
         },
         methods: {}
     });
