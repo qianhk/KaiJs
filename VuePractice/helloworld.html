@@ -138,8 +138,8 @@
 </div>
 
 <div id="app-9">
-    <my-component></my-component>
-    <child-component></child-component>
+    <my-component message-prop='myMsg'></my-component>
+    <child-component :message='msgToChild'></child-component>
 </div>
 
 <script>
@@ -327,24 +327,32 @@
     });
 
     Vue.component('my-component', {
-        template: '<div>A custom global component!</div>'
+        template: '<div>A custom global component, {{messageProp}}!</div>',
+        props: ['messageProp']
     });
 
     var Child = {
-        template: '<div>A custom child component!</div>'
-    }
+        template: '<div>A custom child component, {{statisticMsg}}!</div>',
+        props: ['message'],
+        computed: {
+            statisticMsg: function () {
+                return 'original: ' + this.message + " length:" + this.message.length;
+            }
+        }
+    };
 
     const app9 = new Vue({
         el: '#app-9',
         components: {
-            'child-component': Child
+            'child-component': Child,
         },
         data: {
-
+            msgToChild: 'msgToChild From data'
         },
         methods: {
         }
-    })
+    });
+
 </script>
 
 <style type="text/css">
