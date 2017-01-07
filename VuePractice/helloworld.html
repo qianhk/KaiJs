@@ -140,6 +140,7 @@
 <div id="app-9">
     <my-component message-prop='myMsg'></my-component>
     <child-component :message='msgToChild'></child-component>
+    <child-component2 :message='msgToChild' prop-c="a"></child-component2>
 </div>
 
 <script>
@@ -341,10 +342,43 @@
         }
     };
 
+    var Child2 = {
+        template: '<div>A custom child2 component, {{message}}!</div>',
+        props: {
+            message: {
+                validator: function (value) {
+                    return value >= 'a';
+                }
+            },
+            propA: null,
+            propB: [String, Number],
+            propC: {
+                type: String,
+                required: true
+            },
+            propD: {
+                type: Number,
+                default: 100
+            },
+            propE: {
+                type: Object,
+                default: function () {
+                    return { message: 'hello' }
+                }
+            },
+            propF: {
+                validator: function (value) {
+                    return value > 10
+                }
+            }
+        }
+    };
+
     const app9 = new Vue({
         el: '#app-9',
         components: {
             'child-component': Child,
+            'child-component2': Child2,
         },
         data: {
             msgToChild: 'msgToChild From data'
