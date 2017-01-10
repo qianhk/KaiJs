@@ -138,9 +138,10 @@
 </div>
 
 <div id="app-9">
-    <my-component message-prop='myMsg'></my-component>
-    <child-component :message='msgToChild'></child-component>
-    <child-component2 :message='msgToChild' prop-c="a"></child-component2>
+    <my-component message-prop='myMsg'></my-component><br>
+    <child-component :message='msgToChild'></child-component><br>
+    <child-component :message='msgToChild'>此处是有分发内容的</child-component><br>
+    <child-component2 :message='msgToChild' prop-c="a"></child-component2><br>
 </div>
 
 <div id="counter-event-example">
@@ -338,9 +339,9 @@
             selected: 'B',
             selecteds: ['B', 'C'],
             options: [
-                { text: 'One', value: 'A' },
-                { text: 'Two', value: 'B' },
-                { text: 'Three', value: 'C' }
+                {text: 'One', value: 'A'},
+                {text: 'Two', value: 'B'},
+                {text: 'Three', value: 'C'}
             ],
         },
         methods: {}
@@ -352,7 +353,11 @@
     });
 
     var Child = {
-        template: '<div>A custom child component, {{statisticMsg}}!</div>',
+        template: '<div>A custom child component, {{statisticMsg}}!<br>\
+                        <slot>\
+                            只有在没有要分发的内容时才会显示。\
+                        </slot>\
+                    </div>',
         props: ['message'],
         computed: {
             statisticMsg: function () {
@@ -382,7 +387,7 @@
             propE: {
                 type: Object,
                 default: function () {
-                    return { message: 'hello' }
+                    return {message: 'hello'}
                 }
             },
             propF: {
@@ -402,8 +407,7 @@
         data: {
             msgToChild: 'msgToChild From data'
         },
-        methods: {
-        }
+        methods: {}
     });
 
     Vue.component('button-counter', {
