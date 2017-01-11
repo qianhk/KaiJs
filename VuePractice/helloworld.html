@@ -142,6 +142,11 @@
     <child-component :message='msgToChild'></child-component><br>
     <child-component :message='msgToChild'>此处是有分发内容的</child-component><br>
     <child-component2 :message='msgToChild' prop-c="a"></child-component2><br>
+
+    <br><br>test current view<br>
+    <component v-bind:is="currentView" prop-c="from dynamic component" >
+    </component>
+    <br>end test current view<br><br>
 </div>
 
 <div id="counter-event-example">
@@ -247,6 +252,7 @@
                 app.seen = app3.seen;
                 Vue.set(app4.todos, 0, {text: 'change by Vue.set(...)'})
                 bus.$emit('event-test', 'you clicked reverseMessage');
+                app9.currentView = 'child-component2';
             }
         }
     })
@@ -361,7 +367,7 @@
         props: ['message'],
         computed: {
             statisticMsg: function () {
-                return 'original: ' + this.message + " length:" + this.message.length;
+                return 'original: ' + this.message + " length:" + (this.message ? this.message.length : -1);
             }
         }
     };
@@ -405,7 +411,8 @@
             'child-component2': Child2,
         },
         data: {
-            msgToChild: 'msgToChild From data'
+            msgToChild: 'msgToChild From data',
+            currentView: 'child-component'
         },
         methods: {}
     });
@@ -458,7 +465,8 @@
     new Vue({
         el: '#counter-event-example',
         data: {
-            total: 0
+            total: 0,
+            price: 100
         },
         methods: {
             incrementTotal: function () {
