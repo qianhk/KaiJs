@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Hello World.</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <template v-if="seen">
+        <h5>Title success</h5>
+        <p>Paragraph true</p>
+    </template>
+
+    <template v-else>
+        <div class="box" style="flex-direction: column; flex: 1; align-items: center; justify-content: center; background-color: aquamarine;">
+            <input v-model="inputData" placeholder="input 'ok'">
+            <button @click="onClickAction">Action</button>
+            <p>{{errorText}}</p>
+        </div>
+    </template>
+
+</div>
+
+<script>
+
+    var bus = new Vue();
+
+    bus.$on('event-test', function (data) {
+        console.log('look on event-test: ' + data);
+    });
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            inputData: '',
+            seen: false,
+            errorText: ''
+        },
+        methods: {
+            onClickAction: function () {
+                console.log('look onClickAction: inputData=%s', this.inputData);
+                if (this.inputData == 'ok') {
+                    this.seen = true;
+                } else if (this.inputData) {
+                    this.errorText = 'input error: ' + this.inputData;
+                } else {
+                    this.errorText = 'input can\'t be empty';
+                }
+            }
+        }
+    });
+
+</script>
+
+<style type="text/css">
+
+    .classA {
+        width: 200px;
+        height: 30px;
+        border: 1px solid #ccc;
+    }
+
+    .classB {
+        background: yellow;
+    }
+
+    .box{
+        display: -webkit-flex; /* Safari */
+        display: flex;
+    }
+
+</style>
+
+</body>
+</html>
