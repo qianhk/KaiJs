@@ -15,12 +15,12 @@
 
     <template v-else>
         <div class="box" style="flex-direction: column; flex: 1; align-items: center; justify-content: center;">
-            <div class="box" style="flex-direction: column; flex: 2; justify-content: center;">
+            <div class="box" style="flex-direction: column; justify-content: center;">
                 <input v-model="inputData" placeholder="input 'ok'">
-                <button @click="onClickAction">Action</button>
-            </div>
-            <div class="box" style="flex-direction: column; flex: 1;">
-                <p>{{errorText}}</p>
+                <button @click="onClickAction" style="margin-top: 10px;">Action</button>
+                <div class="box" style="flex-direction: column; height: 100px;">
+                    <p>{{errorText}}</p>
+                </div>
             </div>
         </div>
     </template>
