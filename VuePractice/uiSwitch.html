@@ -15,9 +15,13 @@
 
     <template v-else>
         <div class="box" style="flex-direction: column; flex: 1; align-items: center; justify-content: center;">
-            <input v-model="inputData" placeholder="input 'ok'">
-            <button @click="onClickAction">Action</button>
-            <p>{{errorText}}</p>
+            <div class="box" style="flex-direction: column; flex: 2; justify-content: center;">
+                <input v-model="inputData" placeholder="input 'ok'">
+                <button @click="onClickAction">Action</button>
+            </div>
+            <div class="box" style="flex-direction: column; flex: 1;">
+                <p>{{errorText}}</p>
+            </div>
         </div>
     </template>
 
