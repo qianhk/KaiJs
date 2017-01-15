@@ -23,8 +23,13 @@
     },
     methods: {
       onClickTest: function () {
-        console.log('test click');
+        let vm = this;
+        console.log('test click, before update: ' + this.$name.textContent);
         this.message = 'on click test';
+        console.log('test click, after update: ' + this.$name.textContent);
+        Vue.nextTick(function () {
+          console.log('test click, after nextTick: ' + vm.$name.textContent);
+        });
       }
     }
   }
