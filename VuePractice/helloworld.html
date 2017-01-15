@@ -138,13 +138,17 @@
 </div>
 
 <div id="app-9">
-    <my-component message-prop='myMsg'></my-component><br>
-    <child-component :message='msgToChild'></child-component><br>
-    <child-component :message='msgToChild'>此处是有分发内容的</child-component><br>
-    <child-component2 :message='msgToChild' prop-c="a"></child-component2><br>
+    <my-component message-prop='myMsg'></my-component>
+    <br>
+    <child-component :message='msgToChild'></child-component>
+    <br>
+    <child-component :message='msgToChild'>此处是有分发内容的</child-component>
+    <br>
+    <child-component2 :message='msgToChild' prop-c="a"></child-component2>
+    <br>
 
     <br><br>test current view<br>
-    <component v-bind:is="currentView" prop-c="from dynamic component" >
+    <component v-bind:is="currentView" prop-c="from dynamic component">
     </component>
     <br>end test current view<br><br>
 </div>
@@ -247,7 +251,16 @@
         },
         methods: {
             reverseMessage: function () {
-                this.message = this.message.split('').reverse().join('')
+                let vm = this;
+                console.log('test click, before update: ' + this.$el.textContent);
+                this.message = this.message.split('').reverse().join('');
+                console.log('test click, after update: ' + this.$el.textContent);
+                Vue.nextTick(function () {
+                    console.log('test click, after nextTick: ' + vm.$el.textContent);
+                });
+                this.$nextTick(function () {
+                    console.log('test click, after nextTick by this: ' + this.$el.textContent);
+                });
                 app3.seen = !app3.seen;
                 app.seen = app3.seen;
                 Vue.set(app4.todos, 0, {text: 'change by Vue.set(...)'})
