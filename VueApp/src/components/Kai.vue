@@ -30,11 +30,11 @@
 <script>
   export default{
     name: 'kaiTest',
-      data(){
+    data(){
       return {
         msg: 'hello kai',
         show: true,
-        items: [1,2,3,4,5,6,7,8,9],
+        items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
         nextNum: 10
       }
     },
@@ -54,9 +54,25 @@
         this.items.splice(this.randomIndex(), 1)
       },
       shuffle: function () {
-        this.items = _.shuffle(this.items)
+//        this.items = _.shuffle(this.items)
+        let data = this.items;
+        this.items = null;
+        this.shuffleMethod(data);
+        this.items = data;
+      },
+
+      shuffleMethod: function (a) {
+        var j, x, i;
+        for (i = a.length; i; i--) {
+          j = Math.floor(Math.random() * i);
+          x = a[i - 1];
+          a[i - 1] = a[j];
+          a[j] = x;
+        }
       }
     }
+
+
   }
 
 
@@ -67,34 +83,40 @@
   .fade-enter-active, .fade-leave-active {
     transition: opacity 1.5s
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */
+  {
     opacity: 0
   }
-
 
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
+
   .slide-fade-leave-active {
     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
   }
+
   .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for <2.1.8 */ {
+    /* .slide-fade-leave-active for <2.1.8 */
+  {
     transform: translateX(10px);
     opacity: 0;
   }
-
 
   .list-complete-item {
     transition: all 1s;
     display: inline-block;
     margin-right: 10px;
   }
+
   .list-complete-enter, .list-complete-leave-to
-    /* .list-complete-leave-active for <2.1.8 */ {
+    /* .list-complete-leave-active for <2.1.8 */
+  {
     opacity: 0;
     transform: translateY(30px);
   }
+
   .list-complete-leave-active {
     position: absolute;
   }
