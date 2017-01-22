@@ -1,21 +1,19 @@
 <template>
   <div id="kaiTest">
-    {{message}}
+    <button @click="show = !show">Toggle</button>
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
   </div>
 </template>
-<style>
-  body {
-    background-color: #ff0000;
-  }
 
-
-</style>
 <script>
   export default{
     name: 'kaiTest',
-    data(){
+      data(){
       return {
-        msg: 'hello kai'
+        msg: 'hello kai',
+        show: true
       }
     },
     components: {},
@@ -29,3 +27,13 @@
 
 
 </script>
+
+
+<style>
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0
+  }
+</style>

@@ -1,20 +1,30 @@
 <template>
   <div id="app">
+
+    <p>kai.vue</p><br/>
+    <KaiTest></KaiTest>
+    <br/><br/>
+
     <img src="./assets/logo.png">
     <p>test2</p>
     <p>{{message}}</p>
     <button @click="onClickTest">test click</button>
     <hello></hello>
+
+    <br/><br/>
+
   </div>
 </template>
 
 <script>
   import Hello from './components/Hello'
+  import KaiTest from './components/Kai'
 
   export default {
     name: 'app',
     components: {
-      Hello
+      Hello,
+      KaiTest
     },
     data() {
       return {
