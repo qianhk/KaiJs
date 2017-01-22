@@ -57,24 +57,25 @@
 //        this.items = _.shuffle(this.items)
         let data = this.items;
         this.items = null;
-        this.shuffleMethod(data);
+        shuffleMethod(data);
         this.items = data;
       },
 
-      shuffleMethod: function (a) {
-        var j, x, i;
-        for (i = a.length; i; i--) {
-          j = Math.floor(Math.random() * i);
-          x = a[i - 1];
-          a[i - 1] = a[j];
-          a[j] = x;
-        }
-      }
+
     }
 
 
   }
 
+  function shuffleMethod(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+      j = Math.floor(Math.random() * i);
+      x = a[i - 1];
+      a[i - 1] = a[j];
+      a[j] = x;
+    }
+  }
 
 </script>
 
