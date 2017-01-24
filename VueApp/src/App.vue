@@ -5,6 +5,7 @@
     <KaiTest></KaiTest>
     <br/><br/>
 
+    <p>kaiJade.vue</p><br/>
     <KaiJade></KaiJade>
     <br/><br/>
 

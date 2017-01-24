@@ -1,6 +1,6 @@
 <template lang="jade">
   div
-  p {{msg}} from jade
+    p {{msg}} from jade
 </template>
 
 <script>
