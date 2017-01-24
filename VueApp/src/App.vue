@@ -5,6 +5,9 @@
     <KaiTest></KaiTest>
     <br/><br/>
 
+    <KaiJade></KaiJade>
+    <br/><br/>
+
     <img src="./assets/logo.png">
     <p>test2</p>
     <p>{{message}}</p>
@@ -19,12 +22,14 @@
 <script>
   import Hello from './components/Hello'
   import KaiTest from './components/Kai'
+  import KaiJade from './components/KaiJade.vue'
 
   export default {
     name: 'app',
     components: {
       Hello,
-      KaiTest
+      KaiTest,
+      KaiJade
     },
     data() {
       return {
