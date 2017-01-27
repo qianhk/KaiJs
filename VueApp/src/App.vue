@@ -51,33 +51,34 @@
         });
       },
       goPage: function (href) {
-        console.log('look goto page: ' + href + ' this.$root=' + JSON.stringify(this.$root));
-        this.$root.currentRoute = this.href;
+//        console.log('look goto page: ' + href + ' this.$root=' + simpleStringify(this.$root));
+        this.$root.currentRoute = href;
         window.history.pushState(
           null,
-          routes[this.href],
-          this.href
+          routes[href],
+          href
         )
       }
     }
   }
 
-  function simpleStringify (object){
+  function simpleStringify(object) {
     var simpleObject = {};
-    for (var prop in object ){
-      if (!object.hasOwnProperty(prop)){
+    for (var prop in object) {
+      if (!object.hasOwnProperty(prop)) {
         continue;
       }
-      if (typeof(object[prop]) == 'object'){
+      if (typeof(object[prop]) == 'object') {
         continue;
       }
-      if (typeof(object[prop]) == 'function'){
+      if (typeof(object[prop]) == 'function') {
         continue;
       }
       simpleObject[prop] = object[prop];
     }
     return JSON.stringify(simpleObject); // returns cleaned up JSON
-  };
+  }
+  ;
 
 </script>
 

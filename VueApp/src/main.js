@@ -7,7 +7,8 @@ import routes from './routes'
 const app = new Vue({
   el: '#app',
   data: {
-    currentRoute: window.location.pathname
+    currentRoute: window.location.pathname,
+    testData: 'kaiForLookObject'
   },
   computed: {
     ViewComponent () {
