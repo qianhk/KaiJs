@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app2">
 
     <p>kai.vue</p><br/>
     <KaiTest></KaiTest>
@@ -16,6 +16,8 @@
     <hello></hello>
 
     <br/><br/>
+    <a @click="goPage('/page1')">Page1</a>
+    <a @click="goPage('/about')">About</a>
 
   </div>
 </template>
@@ -24,9 +26,10 @@
   import Hello from './components/Hello'
   import KaiTest from './components/Kai'
   import KaiJade from './components/KaiJade.vue'
+  import routes from './routes'
 
   export default {
-    name: 'app',
+    name: 'app2',
     components: {
       Hello,
       KaiTest,
@@ -46,9 +49,35 @@
         Vue.nextTick(function () {
           console.log('test click, after nextTick: ' + vm.$name.textContent);
         });
+      },
+      goPage: function (href) {
+        console.log('look goto page: ' + href + ' this.$root=' + JSON.stringify(this.$root));
+        this.$root.currentRoute = this.href;
+        window.history.pushState(
+          null,
+          routes[this.href],
+          this.href
+        )
       }
     }
   }
+
+  function simpleStringify (object){
+    var simpleObject = {};
+    for (var prop in object ){
+      if (!object.hasOwnProperty(prop)){
+        continue;
+      }
+      if (typeof(object[prop]) == 'object'){
+        continue;
+      }
+      if (typeof(object[prop]) == 'function'){
+        continue;
+      }
+      simpleObject[prop] = object[prop];
+    }
+    return JSON.stringify(simpleObject); // returns cleaned up JSON
+  };
 
 </script>
 

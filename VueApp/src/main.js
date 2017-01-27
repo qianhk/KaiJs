@@ -11,6 +11,7 @@ const app = new Vue({
   },
   computed: {
     ViewComponent () {
+      console.log('look route: currentRoute: ' + this.currentRoute);
       const matchingView = routes[this.currentRoute]
       return matchingView
         ? require(matchingView + '.vue')
@@ -20,9 +21,8 @@ const app = new Vue({
   render (h) {
     return h(this.ViewComponent)
   }
-})
+});
 
 window.addEventListener('popstate', () => {
   app.currentRoute = window.location.pathname
-})
-
+});
