@@ -16,8 +16,9 @@
     <hello></hello>
 
     <br/><br/>
-    <a @click="goPage('/page1')">Page1</a>
-    <a @click="goPage('/about')">About</a>
+    <a @click="goPage('/page1')" href="http://wap.3g.cn">Page1</a>
+    <a @click="goPage('/about')" href="http://www.xueqiu.com">About</a>
+    <a href="http://www.csdn.net">Normal Test</a>
 
   </div>
 </template>
@@ -51,6 +52,7 @@
         });
       },
       goPage: function (href) {
+        event.preventDefault();
 //        console.log('look goto page: ' + href + ' this.$root=' + simpleStringify(this.$root));
         this.$root.currentRoute = href;
         window.history.pushState(
@@ -78,7 +80,6 @@
     }
     return JSON.stringify(simpleObject); // returns cleaned up JSON
   }
-  ;
 
 </script>
 
