@@ -7,10 +7,15 @@
 
 
 <script>
+
+  var marked = require('marked');
+
   export default {
-    el: '#editor',
-    data: {
-      input: '# hello'
+    name: 'editor',
+    data() {
+      return {
+        input: '# hello'
+      }
     },
     computed: {
       compiledMarkdown: function () {
