@@ -16,8 +16,9 @@
     <hello></hello>
 
     <br/><br/>
-    <a @click="goPage('/page1')" href="http://wap.3g.cn">Page1</a>
-    <a @click="goPage('/about')" href="http://www.xueqiu.com">About</a>
+    <a @click="goPage('/page1')" href="http://wap.3g.cn">Page1</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    <a @click="goPage('/about')" href="http://www.xueqiu.com">About</a>&nbsp;&nbsp;&nbsp;
+    <a @click="goPage('/markdown')" >Markdown Test</a>&nbsp;&nbsp;&nbsp;
     <a href="http://www.csdn.net">Normal Test</a>
 
   </div>
