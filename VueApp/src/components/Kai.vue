@@ -54,11 +54,11 @@
         this.items.splice(this.randomIndex(), 1)
       },
       shuffle: function () {
-//        this.items = _.shuffle(this.items)
-        let data = this.items;
-        this.items = null;
-        shuffleMethod(data);
-        this.items = data;
+        this.items = _.shuffle(this.items)
+//        let data = this.items;
+//        this.items = null;
+//        shuffleMethod(data);
+//        this.items = data;
       },
 
 

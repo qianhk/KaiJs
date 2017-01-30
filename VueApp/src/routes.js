@@ -4,5 +4,6 @@
 export default {
   '/': './App',
   '/page1': './pages/Page1',
-  '/about': './pages/About'
+  '/about': './pages/About',
+  '/markdown': './pages/Markdown'
 }
