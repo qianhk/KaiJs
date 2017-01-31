@@ -18,7 +18,7 @@
     <br/><br/>
     <a @click="goPage('/page1')" href="http://wap.3g.cn">Page1</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a @click="goPage('/about')" href="http://www.xueqiu.com">About</a>&nbsp;&nbsp;&nbsp;
-    <a @click="goPage('/markdown')" >Markdown Test</a>&nbsp;&nbsp;&nbsp;
+    <a @click="goPage('/markdown')" style="text-decoration: underline;" class="one">Markdown Test</a>&nbsp;&nbsp;&nbsp;
     <a href="http://www.csdn.net">Normal Test</a>
 
   </div>
@@ -94,5 +94,8 @@
     margin-top: 60px;
   }
 
+  a.one:link {color:#ff0000;}
+  a.one:visited {color:#0000ff;}
+  a.one:hover {color:#ffcc00;}
 
 </style>
