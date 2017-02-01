@@ -19,6 +19,7 @@
     <a @click="goPage('/page1')" href="http://wap.3g.cn">Page1</a>&nbsp;&nbsp;&nbsp;&nbsp;
     <a @click="goPage('/about')" href="http://www.xueqiu.com">About</a>&nbsp;&nbsp;&nbsp;
     <a @click="goPage('/markdown')" style="text-decoration: underline;" class="one">Markdown Test</a>&nbsp;&nbsp;&nbsp;
+    <a @click="goPage('/github')" style="text-decoration: underline;" class="one">Data From Github</a>&nbsp;&nbsp;&nbsp;
     <a href="http://www.csdn.net">Normal Test</a>
 
   </div>
