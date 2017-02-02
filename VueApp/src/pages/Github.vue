@@ -15,7 +15,9 @@
         <a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a>
         - <span class="message">{{ record.commit.message | truncate }}</span><br>
         by <span class="author"><a :href="record.author.html_url"
-                                   target="_blank">{{ record.commit.author.name }}</a></span>
+                                   target="_blank">{{ record.commit.author.name }}
+        <img :src="record.author.avatar_url" style="width: 20px; height: 20px;"/></a></span>
+
         at <span class="date">{{ record.commit.author.date | formatDate }}</span>
       </li>
     </ul>
