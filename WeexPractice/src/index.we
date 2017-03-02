@@ -123,11 +123,14 @@
                     // let {add, mimus} = utils;
                     // this.result = 'use common utils: minus(3,5)=' + utils.minus(3, 5);
 
+                    var utils = require('./common/utils')
+
                     var storage = require('@weex-module/storage');
                     storage.getItem('bar', function (e) {
                         // 'e'是一个包含'result'和'data'的对象.
                         // 使用'e.data'获取键的值，如果没有找到对应的键值则返回'undefined'.
                         console.log('storage.getItem e:' + JSON.stringify(e));
+                        utils.toast("storage " +  JSON.stringify(e));
                     });
 
                 } else if (id == 'testToast') {
