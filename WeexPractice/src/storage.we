@@ -36,13 +36,17 @@
         },
         methods: {
             setItem () {
-                storage.setItem('name', 'Hanks', event => {
+                storage.setItem('name3', {
+                    'id_1':1,
+                    'id_2':2,
+                    'id_3':3
+                }, event => {
                     this.state = 'set success'
                     console.log('set success')
                 })
             },
             getItem () {
-                storage.getItem('name', event => {
+                storage.getItem('name3', event => {
                     console.log('get value:', event.data)
                     this.state = 'value: ' + event.data
                 })
