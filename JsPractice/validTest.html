@@ -17,5 +17,65 @@
 <p id="idTxtResult"></p>
 
 </body>
+<script type="text/javascript">
+var i,len,testData = [],testCount = 9999,repeatCount = 999;
 
+function doInit(testData){
+  for(var i = testCount; i--;){
+      testData[i] = i;
+  }
+}
+
+function doRepeat(operation,data){
+  for(var i = 0; i < repeatCount;i++){
+    operation(data);
+  }
+}
+function origin(data){
+  var ret = [];
+  for(var i = 0; i < data.length; i++){
+    ret[i] = data[i] * data[i];
+  }
+}
+
+function optLen(data){
+  var ret = [];
+  for(var i = 0,len = data.length; i < len; i++){
+    ret[i] = data[i] * data[i];
+  }
+}
+
+function optIdx(data){
+  var ret = [],tmpData;
+  for(var i = 0,len = data.length; i < len; i++){
+    tmpData = data[i];
+    ret[i] = tmpData * tmpData;
+  }
+}
+
+function optCmp(data){
+  var ret = [];
+  for(var i = data.length; i-- > 0;){
+    ret[i] = data[i] * data[i];
+  }
+}
+
+doInit(testData);
+
+console.time("origin")
+doRepeat(origin,testData); //56ms
+console.timeEnd('origin')
+
+console.time('optmize len');
+doRepeat(optLen,testData) //52ms
+console.timeEnd('optmize len');
+
+console.time('optmize index');
+doRepeat(optIdx,testData) //50ms
+console.timeEnd('optmize index');
+
+console.time('optmize compare');
+doRepeat(optCmp,testData)  //360ms
+console.timeEnd('optmize compare');
+</script>
 </html>
