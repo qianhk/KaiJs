@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: transparent">
+    <div style="background-color: green">
         <div style="flex-direction: row; justify-content: space-between;">
             <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('LOADING')">LOADING</text>
             <text style="background-color: palegoldenrod; color: dodgerblue;" onclick="onChangeState('NO_DATA')">NO_DATA</text>
