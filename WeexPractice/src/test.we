@@ -1,0 +1,46 @@
+<template>
+    <scroller show-scrollbar='true' scroll-direction='vertical'>
+        <div>
+            <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('testToast')">Toast</text>
+        </div>
+    </scroller>
+</template>
+
+<style>
+</style>
+
+<script>
+    const toast = require('@weex-module/pw-toast');
+    module.exports = {
+        methods: {
+            onClick: function (id) {
+                console.log('onclick id=' + id);
+                if (id == 'testToast') {
+                    toast.show('haha, from weex')
+                }
+            },
+        },
+        init: function () {
+            console.log('ViewModel constructor begins')
+        },
+        created: function () {
+            console.log('Data observation finished')
+        },
+        ready: function () {
+        },
+        events: {},
+    }
+</script>
+
+<script type="data">
+    {
+        ctHeight: -1,
+        img: 'http://gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
+        result: '此处显示结果1 data from script type=\'data\'',
+        // id: -1,
+    }
+
+
+
+
+</script>
