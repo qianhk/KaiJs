@@ -16,7 +16,7 @@
             onClick: function (id) {
                 console.log('onclick id=' + id);
                 if (id == 'testToast') {
-                    toast.show('haha, from weex')
+                    toast.toast('haha, from weex')
                 }
             },
         },
