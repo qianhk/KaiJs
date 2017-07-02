@@ -2,6 +2,7 @@
     <scroller show-scrollbar='true' scroll-direction='vertical'>
         <div>
             <text style="font-size: 28;color:rgb(255,0,0)" onclick="onClick('testToast')">Toast</text>
+            <text style="font-size: 28;color:rgb(255,0,0); font-family: iconfont;" onclick="onClick('testToast')">iconfont: &#xe668; &#xe704; &#xe711;</text>
         </div>
     </scroller>
 </template>
@@ -28,6 +29,13 @@
         },
         ready: function () {
         },
+//        mounted: function () {
+//            var domModule = weex.requireModule('dom');
+//            domModule.addRule('fontFace', {
+//                'fontFamily': "iconfont2",
+//                'src': "url('http://at.alicdn.com/t/font_1469606063_76593.ttf')"
+//            });
+//        },
         events: {},
     }
 </script>
