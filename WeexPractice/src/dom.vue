@@ -63,7 +63,7 @@
 
                 const result = dom.getComponentRect(this.ref, option => {
                     console.log('getComponentRect:', option)
-                    this.size = round.call(this, option.size);
+                    this.size = round(option.size);
                 })
             }
         }
