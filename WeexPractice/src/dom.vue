@@ -1,6 +1,6 @@
 <template>
     <scroller>
-    <div class="wrapper" style='margin-top:200px'>
+    <div class="wrapper" style='margin-top:200px' ref="wrapper" id="wrapperId">
         <div ref="box" class="box">
             <text class="info">Width: {{size.width}}</text>
             <text class="info">Height: {{size.height}}</text>
@@ -12,12 +12,13 @@
 
         <text class="info btn" @click='click()'>{{this.tip}}</text>
 
-        <text>id: {{did}}</text>
+        <text>id3: {{did}}</text>
         <text>url: {{durl}}</text>
         <text>type: {{dtype}}</text>
         <text>attr: {{dattr}}</text>
         <text>style: {{dstyle}}</text>
         <text>ref: {{dref}}</text>
+        <text>config: {{dconfig}}</text>
         <text>&nbsp;</text>
         <text>document: {{ddocument}}</text>
     </div>
@@ -61,6 +62,7 @@
                 dstyle: '',
                 dref: '',
                 ddocument: '',
+                dconfig: '',
             }
         },
         mounted () {
@@ -72,8 +74,9 @@
 
         created() {
 
+            this.dconfig = weex.config;
             let doc = weex.document;
-            this.ddocument = doc;
+            this.ddocument = doc.getRef('wrapperId');
             this.did = doc.id;
             this.durl = doc.URL;
             this.dtype = doc.type;
