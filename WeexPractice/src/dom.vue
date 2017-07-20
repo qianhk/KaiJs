@@ -1,4 +1,5 @@
 <template>
+    <scroller>
     <div class="wrapper" style='margin-top:200px'>
         <div ref="box" class="box">
             <text class="info">Width: {{size.width}}</text>
@@ -11,11 +12,21 @@
 
         <text class="info btn" @click='click()'>{{this.tip}}</text>
 
+        <text>id: {{did}}</text>
+        <text>url: {{durl}}</text>
+        <text>type: {{dtype}}</text>
+        <text>attr: {{dattr}}</text>
+        <text>style: {{dstyle}}</text>
+        <text>ref: {{dref}}</text>
+        <text>&nbsp;</text>
+        <text>document: {{ddocument}}</text>
     </div>
+    </scroller>
 </template>
 
 <script>
     const dom = weex.requireModule('dom')
+    const modal = weex.requireModule('modal')
 
     function round(size) {
         var roundSize = {
@@ -41,7 +52,15 @@
                     right: 0
                 },
                 ref: "viewport",
-                tip: "get box rect"
+                tip: "get box rect",
+
+                did: '',
+                durl: '',
+                dtype: '',
+                dattr: '',
+                dstyle: '',
+                dref: '',
+                ddocument: '',
             }
         },
         mounted () {
@@ -49,6 +68,18 @@
                 console.log('getComponentRect:', option)
                 this.size = round.call(this, option.size);
             })
+        },
+
+        created() {
+
+            let doc = weex.document;
+            this.ddocument = doc;
+            this.did = doc.id;
+            this.durl = doc.URL;
+            this.dtype = doc.type;
+            this.dattr = doc.attr;
+            this.dstyle = doc.style;
+            this.dref = doc.ref;
         },
 
         methods: {
@@ -71,13 +102,13 @@
     }
 </script>
 
-<style scoped>
+<style>
     .btn {
         margin-top: 20px;
         border-width: 2px;
         border-style: solid;
         border-radius: 10px;
-        width: 300px;
+        width: 400px;
         margin-left: 170px;
         padding-left: 35px;
         border-color: rgb(162, 217, 192);
