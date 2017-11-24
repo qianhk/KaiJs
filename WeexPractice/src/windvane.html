@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Windvane Test</title>
+
+    <script type="text/javascript" src="http://g.alicdn.com/mtb/lib-windvane/2.1.8/windvane.js?v=473944983_3890"></script>
+
+    <script>
+
+
+        function copyText()
+        {
+            document.getElementById("field2").value=document.getElementById("field1").value;
+        }
+        
+        function windvanePopup() {
+            var params = {
+                title: 'Choose a button!',
+                selectedIndex: 0,
+                options: ['按钮 1', '按钮 2', '按钮 3', '按钮 4', '按钮 5']
+            };
+            window.WindVane.call('YKFWVUIActionSheet', 'show', params, function(e) {
+                alert('success: ' + JSON.stringify(e));
+            }, function(e) {
+                alert('failure: ' + JSON.stringify(e));
+            });
+        }
+
+        function playAudio() {
+          var params = {
+            url: 'http://xxxxx.com/audio/QwNjNlYzBiODU1ZmU3NGE2Y2ViNmFhMDI5ZTYzZmI=.amr',
+          };
+          window.WindVane.call('YKFWVAudioPlayer', 'play', params, function(e) {
+            alert('success: ' + JSON.stringify(e));
+          }, function(e) {
+            alert('failure: ' + JSON.stringify(e));
+          });
+        }
+
+        function stopAudio() {
+          window.WindVane.call('YKFWVAudioPlayer', 'stop', {}, function(e) {
+            alert('success: ' + JSON.stringify(e));
+          }, function(e) {
+            alert('failure: ' + JSON.stringify(e));
+          });
+        }
+
+    </script>
+
+</head>
+<body>
+
+Field1: <input type="text" id="field1" value="Hello World!"><br>
+Field2: <input type="text" id="field2"><br><br>
+
+<button onclick="copyText()">复制文本</button>
+<button onclick="windvanePopup()">windvane弹框</button>
+<button onclick="playAudio()">play audio</button>
+<button onclick="stopAudio()">stop audio</button>
+
+<p>当按钮被单击时触发函数。此函数把文本从 Field1 复制到 Field2 中。</p>
+
+</body>
+</html>
