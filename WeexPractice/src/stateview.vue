@@ -9,7 +9,7 @@
         <pw-state-view :state="state" empty-text="测试空文字" @retry="onRetry" style="flex: 1;">
 
             <div style="align-items: center; justify-content: center; flex: 1; width: 750; height: 200;">
-                <text>success view</text>
+                <text>{{successText}}</text>
             </div>
         </pw-state-view>
     </div>
@@ -28,11 +28,13 @@
             }
         },
         created: function () {
-            console.log('created config: ' + JSON.stringify(this.$getConfig()));
+          this.successText = JSON.stringify(weex.config);
+            console.log('created config: ' + this.successText);
         },
         data: function () {
             return {
                 state: 'LOADING',
+              successText: 'success Text',
             }
         }
     }
