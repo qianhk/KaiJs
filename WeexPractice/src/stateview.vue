@@ -13,7 +13,7 @@
           <div style="flex: 1; width: 750; height: 500;">
             <text>{{testText}}</text>
             <text>env:</text>
-            <text>{{envText}}</text>
+            <text style="lines: 10; color:#fff;letter-spacing:0;font-size:30;font-family:PingFangSC-Regular;line-height:36;text-align:left;background-color:#888;">{{envText}}</text>
             <text @click="onClickUserInfo">user:</text>
             <text>{{userText}}</text>
             <text>all:</text>
