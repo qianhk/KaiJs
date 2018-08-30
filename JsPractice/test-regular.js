@@ -52,3 +52,48 @@ console.log(result2.groups.day); // 打印"25"
 for (let value of result1) {  // weex的sdk js环境不支持这个写法
   console.log(`result1_value=${value}`);
 }
+
+let {foo, bar} = {foo: "aaa", bar: "bbb"};
+console.log(`foo=${foo} baz=${bar}`);
+
+let {foo: baz} = {foo: "aaa", bar: "bbb"};
+console.log(`foo={foo} baz=${baz}`); // "aaa"  // foo is not defined
+
+let person = {
+  name: "张三"
+};
+
+let proxy = new Proxy(person, {
+  get: function(target, property) {
+    if (property === 'name') {
+      return "李四";
+    } else {
+      return "你猜";
+    }
+  }
+});
+
+console.log(`${person.name}, ${proxy.name}, ${proxy.age}`); //张三, 李四, 你猜
+
+setTimeout(function() {
+  console.log(1);
+}, 0);
+console.log(2);
+
+
+let promise = new Promise(function(resolve, reject) {
+  console.log('Promise');
+  resolve();
+});
+
+promise.then(function() {
+  console.log('resolved.');
+});
+
+console.log('Hi!');
+
+const total = [0, 1, 2, 3].reduce(function(sum, currentValue) {
+  return sum + currentValue;
+}, 0);
+console.log('total=' + total);
+
